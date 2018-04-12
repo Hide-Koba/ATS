@@ -1,0 +1,1 @@
+ALTER TABLE `Resume_Candidate` ADD `cv_file_name` VARCHAR(256) NOT NULL AFTER `Job_Pos`;
