@@ -29,6 +29,7 @@ class Admin_controller extends CI_Controller {
 	{
 		if($this->input->post())
 		{
+			echo "Hello world";
 			$data=$this->admin_model->user_list($this->input->post('username'),$this->input->post('password'));
 			echo $data;
 
