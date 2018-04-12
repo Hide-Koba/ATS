@@ -39,4 +39,21 @@ class Admin_model extends CI_Model {
 		return false;
 	}
 
+	public function list_candidate()
+        {
+                $this->db->select('id,first_name,last_name');
+                $this->db->from("Resume_Candidate");
+                $query=$this->db->get();
+                return $query->result();
+        }
+
+        public function list_single_user_detail($id)
+        {
+            $this->db->select('*');
+            $this->db->from('Resume_Candidate');
+            $this->db->where('id',$id);
+            $query=$this->db->get();
+            return $query->row();
+        }
+
 }

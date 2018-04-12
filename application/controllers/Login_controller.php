@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin_controller extends CI_Controller {
+class Login_controller extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -29,14 +29,23 @@ class Admin_controller extends CI_Controller {
 	{
 		if($this->input->post())
 		{
-			echo "Hello world";
 			$data=$this->admin_model->user_list($this->input->post('username'),$this->input->post('password'));
-			echo $data;
+			$newdata=array(
+					'username'=>$this->input->post('username'),
+					'logged_in'=>$data
+			);
+
+			$this->session->set_userdata($newdata);
+			if($data==="success")
+				redirect("candidate_controller");
+			else
+				$this->load->view('Admin_view',$newdata);
 
 		}
 		else
 		{
 			$this->load->view('Admin_view');
+
 		}
 		
 	}

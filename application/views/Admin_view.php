@@ -16,6 +16,11 @@
   <body>
     <h1 align="center">MACS Technology</h1>
     <div class= "abc">
+        <?php 
+          if(isset($logged_in))
+            echo "login failed";
+          
+        ?>
           <form action="" method="post">
             <table>
               <tr>
