@@ -25,6 +25,7 @@ class User_upload extends CI_Controller {
         }
 	public function index()
 	{
+        echo 'test updating';
                 $this->load->Model('User_uploads');
                 $data = $this->input->post();
                 //var_dump($data);
