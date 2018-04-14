@@ -22,14 +22,14 @@ class Login_controller extends CI_Controller {
 	function __construct()
     {
         parent::__construct();
-        $this->load->model('admin_model');
+        $this->load->model('Admin_model');
     } 
     
 	public function index()
 	{
 		if($this->input->post())
 		{
-			$data=$this->admin_model->user_list($this->input->post('username'),$this->input->post('password'));
+			$data=$this->Admin_model->user_list($this->input->post('username'),$this->input->post('password'));
 			$newdata=array(
 					'username'=>$this->input->post('username'),
 					'logged_in'=>$data

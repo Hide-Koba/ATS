@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class candidate_Controller extends CI_Controller {
+class Candidate_Controller extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -21,16 +21,16 @@ class candidate_Controller extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->model('admin_model');
-		$data['list']=$this->admin_model->list_candidate();
+		$this->load->model('Admin_model');
+		$data['list']=$this->Admin_model->list_candidate();
 
 		$this->load->view("candidate_view",$data);
 
 	}
 
 	public function single_user_detail($id){
-		$this->load->model('admin_model');
-		$data['list']=$this->admin_model->list_single_user_detail($id);
+		$this->load->model('Admin_model');
+		$data['list']=$this->Admin_model->list_single_user_detail($id);
 		$this->load->view("single_user_detail",$data);
 	}
 }
