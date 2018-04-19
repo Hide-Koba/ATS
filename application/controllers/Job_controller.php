@@ -27,27 +27,14 @@ class Job_controller extends CI_Controller {
     
 	public function index()
 	{
-		if($this->input->post())
-		{
-			$data=$this->Admin_model->user_list($this->input->post('username'),md5($this->input->post('password')));
-			$newdata=array(
-					'username'=>$this->input->post('username'),
-					'logged_in'=>$data
-			);
 
-			$this->session->set_userdata($newdata);
-			if($data==="success")
-				redirect("candidate_controller");
-			else
-				$this->load->view('Admin_view',$newdata);
-
-		}
-		else
-		{
-			$this->load->view('Admin_view');
-
-		}
-		
+		//Load model
+		$this->load->Model('Job_model');
+		//Retrieve Data
+		$job_list = $this->Job_model->get_list();
+		var_dump($job_list);
+		$body["job_data"] = $job_list;
+		$this->load->view('Job_listing',$body);
 	}
 
 	// public function register()
