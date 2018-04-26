@@ -19,6 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
 	<meta charset="utf-8">
 	<title>Candidate Listing page</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<style type="text/css">
 
@@ -96,7 +97,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<td><?php echo $item->id;?></td>
 			<td><?php echo $item->first_name;?></td>
 			<td><?php echo $item->last_name;?></td>
-			<td><?php if($item->Status==1) { ?>
+			<td> <select name="status" id="status" onChange="changeStatus(this.value,<?php echo $item->id;?>)">
+				<option value="1" <?php echo $item->Status==1?"Selected":"" ?>>Received</option>
+				<option value="2" <?php echo $item->Status==2?"Selected":"" ?>>Reviewed</option>
+				<option value="3"<?php echo $item->Status==3?"Selected":"" ?>>Interviewed</option>
+				<option value="4" <?php echo $item->Status==4?"Selected":"" ?>>Selected</option>
+				</select>
+			</td>
+			<!-- <td><?php if($item->Status==1) { ?>
 						<button type="submit" name="view">Received</button>
 					
 						<?php } elseif($item->Status==2){?>
@@ -119,12 +127,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     	<?php
                     }
                     ?>
-					</td>
+					</td> -->
 			<td><a href="<?php echo base_url('index.php/candidate_controller/single_user_detail/').$item->id ?>"><button type="submit" name="view">view</button></a>
 		</tr>
 		<?php endforeach;?>
 	</div>
 </div>
+
+
+<script type="text/javascript">
+		function changeStatus(value,id){
+			//console.log(id)
+			$.ajax({
+				url:'candidate_controller/status',
+				type:'POST',
+				dataType:'text',
+				data:{
+					'value':value,
+					'id':id
+					},
+			})
+
+			.done(function (){
+				location.reload();
+			});
+		}
+
+
+</script>
 
 </body>
 </html>

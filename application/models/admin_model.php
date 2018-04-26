@@ -41,7 +41,7 @@ class Admin_model extends CI_Model {
 
 	public function list_candidate()
         {
-                $this->db->select('id,first_name,last_name');
+                $this->db->select('id,first_name,last_name,Status');
                 $this->db->from("Resume_Candidate");
                 $query=$this->db->get();
                 return $query->result();
@@ -54,6 +54,13 @@ class Admin_model extends CI_Model {
             $this->db->where('id',$id);
             $query=$this->db->get();
             return $query->row();
+        }
+
+        public function status_update($value,$id)
+        {
+        	$this->db->where('id',$id);
+        	$this->db->update('Resume_Candidate',array('status'=>$value));
+        	return "success";
         }
 
 }
