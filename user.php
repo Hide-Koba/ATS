@@ -1,9 +1,10 @@
 <?php
-    $con = mysqli_connect("localhost", "root", "", "ATS");
+    //$con = mysqli_connect("localhost", "root", "", "ATS");
+    $con = mysqli_connect("localhost", "cybersyd_ats", "@gm3BX9wbuay", "cybersyd_ats");
     
     $username = $_POST['username'];
       // $username='admin';
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
       // $password="password";
     
     $statement = mysqli_prepare($con, "SELECT username,password FROM mac_users WHERE username = ? AND password = ?");
