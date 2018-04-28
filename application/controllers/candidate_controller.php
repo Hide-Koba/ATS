@@ -33,4 +33,11 @@ class Candidate_Controller extends CI_Controller {
 		$data['list']=$this->Admin_model->list_single_user_detail($id);
 		$this->load->view("single_user_detail",$data);
 	}
+
+	public function status(){
+		//print_r($this->input->post());
+		$this->load->model('Admin_model');
+		$data=$this->Admin_model->status_update($this->input->post('value'),$this->input->post('id'));
+		echo $data;
+	}
 }

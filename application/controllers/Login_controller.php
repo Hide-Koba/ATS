@@ -29,7 +29,7 @@ class Login_controller extends CI_Controller {
 	{
 		if($this->input->post())
 		{
-			$data=$this->Admin_model->user_list($this->input->post('username'),$this->input->post('password'));
+			$data=$this->Admin_model->user_list($this->input->post('username'),md5($this->input->post('password')));
 			$newdata=array(
 					'username'=>$this->input->post('username'),
 					'logged_in'=>$data

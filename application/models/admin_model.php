@@ -32,11 +32,16 @@ class Admin_model extends CI_Model {
 			return "failed";
 	}
 
-
+	public function register($data)
+	{
+		if($this->db->insert('mac_users',$data))
+			return true;
+		return false;
+	}
 
 	public function list_candidate()
         {
-                $this->db->select('id,first_name,last_name');
+                $this->db->select('id,first_name,last_name,Status');
                 $this->db->from("Resume_Candidate");
                 $query=$this->db->get();
                 return $query->result();
@@ -51,11 +56,11 @@ class Admin_model extends CI_Model {
             return $query->row();
         }
 
-      public function add_admin_user($data)
-      {
-      	if($this->db->insert('mac_users',$data))
-      		return 'success';
-      	return 'failed';
+        public function status_update($value,$id)
+        {
+        	$this->db->where('id',$id);
+        	$this->db->update('Resume_Candidate',array('status'=>$value));
+        	return "success";
+        }
 
-      }
 }
