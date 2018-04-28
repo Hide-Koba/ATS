@@ -1,39 +1,19 @@
+<html>
+<head>
+	<link href="<?php echo base_url("application/views/style.css");?>" rel="stylesheet"/>
+</head>
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>ATS</title>
-    <style type="text/css">
-        .abc{
-          border: 2px solid;
-          position:fixed;
-          top:30%;
-          left:40%;
-          width:250px;
-        }
-    </style>
-  </head>
-  <body>
-    <h1 align="center">MACS Technology</h1>
-    <div class= "abc">
-        <?php 
-          if(isset($logged_in))
-            echo "login failed";
-          
-        ?>
-          <form action="" method="post">
-            <table>
-              <tr>
-                <td>Username:</td>
-                <td><input type="text" name="username" required></td>
-              </tr>
-              <tr>
-                  <td>password:</td>
-                  <td><input type="password" name="password" required></td>
-              </tr>
-          </table>
-            <button type="submit" name="login">login</button><br>
-          </form>
-    </div>
-  </body>
+<body>
+	<div class="sidenav">
+		  <a href="#candidate_view">View Candidate</a>
+		  <a href="#add_user">Add User</a>
+		  <a href="#Change Password">Clients</a>
+		  <a href="#Logout">Logout</a>
+	</div>
+
+<div class="main">
+	  <h3>Application tracking system... is being developed..</h3>
+</div>  
+
+</body>
 </html>

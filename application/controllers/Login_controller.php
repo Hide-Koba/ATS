@@ -37,17 +37,40 @@ class Login_controller extends CI_Controller {
 
 			$this->session->set_userdata($newdata);
 			if($data==="success")
-				redirect("candidate_controller");
+				//redirect("candidate_controller");
+				$this->load->view('admin_view');
 			else
-				$this->load->view('Admin_view',$newdata);
+				$this->load->view('login_view',$newdata);
 
 		}
 		else
 		{
-			$this->load->view('Admin_view');
+			$this->load->view('login_view');
 
 		}
 		
+	}
+
+	public function add_admin_user(){
+		if($this->input->post()){
+			$data=array(
+				'first_name'=>$this->input->post('first_name'),
+				'last_name'=>$this->input->post('last_name'),
+				'username'=>$this->input->post('username'),
+				'password'=>$this->input->post('password'),
+				'Address'=>$this->input->post('address'),
+				'Email'=>$this->input->post('email'),
+				'phone_number'=>$this->input->post('phone_number')
+			);
+
+			$msg=$this->Admin_model->add_admin_user($data);
+
+			echo $msg;
+
+		}else{
+			$this->load->view("add_admin_user");
+		}
+
 	}
 
 	// public function register()

@@ -32,12 +32,7 @@ class Admin_model extends CI_Model {
 			return "failed";
 	}
 
-	public function register($data)
-	{
-		if($this->db->insert('mac_users',$data))
-			return true;
-		return false;
-	}
+
 
 	public function list_candidate()
         {
@@ -56,4 +51,11 @@ class Admin_model extends CI_Model {
             return $query->row();
         }
 
+      public function add_admin_user($data)
+      {
+      	if($this->db->insert('mac_users',$data))
+      		return 'success';
+      	return 'failed';
+
+      }
 }
