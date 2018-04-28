@@ -3,7 +3,8 @@
          $dbuser = 'root';
          $dbpass = '';
          $dbname = 'ATS';
-         $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);
+         //$conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);
+         $conn = mysqli_connect("localhost", "cybersyd_ats", "@gm3BX9wbuay", "cybersyd_ats");
    
          if(! $conn ) {
             die('Could not connect: ' . mysqli_error());
@@ -24,7 +25,7 @@
          } else {
             echo "0 results";
          }
-
+         header("Content-type:application/json");
          echo json_encode($response);
          mysqli_close($conn);
       ?>

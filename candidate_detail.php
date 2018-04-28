@@ -5,7 +5,9 @@
          $dbuser = 'root';
          $dbpass = '';
          $dbname = 'ATS';
-         $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);
+         //$conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);
+         //$conn = mysqli_connect("localhost", "root", "", "ats");
+         $conn = mysqli_connect("localhost", "cybersyd_ats", "@gm3BX9wbuay", "cybersyd_ats");
    
          if(! $conn ) {
             die('Could not connect: ' . mysqli_error());
