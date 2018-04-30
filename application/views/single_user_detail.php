@@ -83,6 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<option value="3"<?php echo $list->Status==3?"Selected":"" ?>>Interviewed</option>
 				<option value="4" <?php echo $list->Status==4?"Selected":"" ?>>Selected</option>
 				</select>
+		<input type="button" value="Download file" onclick="location='https://localhost/ats/uploads/<?php echo $list->cv_file_name?>"/>
 	</div>
 </div>
 <script type="text/javascript">
