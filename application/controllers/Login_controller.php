@@ -37,8 +37,8 @@ class Login_controller extends CI_Controller {
 
 			$this->session->set_userdata($newdata);
 			if($data==="success")
-				//redirect("candidate_controller");
-				$this->load->view('admin_view');
+				redirect("Candidate_controller",'refresh');
+				// $this->template->load('template','admin_view');
 			else
 				$this->load->view('login_view',$newdata);
 

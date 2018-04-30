@@ -19,19 +19,26 @@ class Candidate_Controller extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 
 	 */
+	function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Admin_model');
+    }
+    
 	public function index()
 	{
 		$this->load->model('Admin_model');
 		$data['list']=$this->Admin_model->list_candidate();
-
-		$this->load->view("candidate_view",$data);
+		//$this->load->view("candidate_view",$data);
+		$this->template->load("template","admin_view",$data);
 
 	}
 
 	public function single_user_detail($id){
 		$this->load->model('Admin_model');
 		$data['list']=$this->Admin_model->list_single_user_detail($id);
-		$this->load->view("single_user_detail",$data);
+		$this->template->load("template","single2",$data);
+		//$this->load->view("single2",$data);
 	}
 
 	public function status(){
