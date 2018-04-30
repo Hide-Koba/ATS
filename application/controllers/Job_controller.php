@@ -32,9 +32,40 @@ class Job_controller extends CI_Controller {
 		$this->load->Model('Job_model');
 		//Retrieve Data
 		$job_list = $this->Job_model->get_list();
-		var_dump($job_list);
 		$body["job_data"] = $job_list;
 		$this->load->view('Job_listing',$body);
+	}
+
+	public function detail($id=null){
+		if ($id===null){
+			redirect("/Job_controller/index");
+			exit();
+		}
+		$this->load->Model('Job_model');
+		$data['job_detail'] = $this->Job_model->get_detail($id);
+		if ($data['job_detail']['id']===''){
+			redirect("/Job_controller/index");
+			exit();
+		}
+
+		$this->load->view('Job_detail',$data);
+	}
+
+	public function add(){
+		if ($this->input->post()){
+			
+			$data = $this->input->post();
+			unset($data['submit']);
+			$this->load->Model('Job_model');
+			$result = $this->Job_model->add($data);
+		}else{
+			
+		}
+		$this->load->Model('User_uploads');
+		$job_pos = $this->User_uploads->get_jobpositions();
+		$body = array();
+		$body['job_pos'] = $job_pos;
+		$this->load->view('Job_Adding',$body);
 	}
 
 	// public function register()

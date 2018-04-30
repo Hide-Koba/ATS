@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<meta charset="utf-8">
 	<title>Candidate Detail</title>
 
@@ -76,8 +77,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<?php echo "Address: ",$list->Address; ?><br>
 		<?php echo "Email: ",$list->Email;?><br>
 		<?php echo "Phone: ", $list->Phone_Number;?><br>
+		<select name="status" id="status" onChange="changeStatus(this.value,<?php echo $list->id;?>)">
+				<option value="1" <?php echo $list->Status==1?"Selected":"" ?>>Received</option>
+				<option value="2" <?php echo $list->Status==2?"Selected":"" ?>>Reviewed</option>
+				<option value="3"<?php echo $list->Status==3?"Selected":"" ?>>Interviewed</option>
+				<option value="4" <?php echo $list->Status==4?"Selected":"" ?>>Selected</option>
+				</select>
+		<input type="button" value="Download file" onclick="location='https://localhost/ats/uploads/<?php echo $list->cv_file_name?>"/>
 	</div>
 </div>
+<script type="text/javascript">
+		function changeStatus(value,id){
+			//console.log(id)
+			$.ajax({
+				//url:'candidate_controller/status',
+				url:'../status',
+				type:'POST',
+				dataType:'text',
+				data:{
+					'value':value,
+					'id':id
+					},
+			})
+
+			.done(function (){
+				location.reload();
+			});
+		}
+
+
+</script>
+
 
 </body>
 </html>
