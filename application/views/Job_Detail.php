@@ -3,8 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+	<title>Candidate Detail</title>
 
 	<style type="text/css">
 
@@ -68,31 +69,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-	<h1>Welcome to JoB List </h1>
-
+	<h1>Job Detail page</h1>
 	<div id="body">
-	<table>
-	<tr>
-		<th>Job title</th>
-		<th>Job Description</th>
-		<th>Place of Work</th>
-		<th>Wage per month</th>
-	<?php
-		foreach($job_data as $each){
-			?>
-			<tr>
-			<td><a href="<?=base_url();?>index.php/Job_controller/Detail/<?=$each['id']?>"><?php echo $each['Post_Title']?></a></td>
-			<td><?php echo $each['Post_Description']?></a></td>
-			<td><?php echo $each['place_of_work']?></a></td>
-			<td>$<?php echo $each['wage_per_month']?></a></td>
-			</tr>
-			<?php
-		}
-	?>
-	</table>
-
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+        <table>
+            
+            <tr><td>Job title</td><td><?=$job_detail['Post_Title']?></td></tr>
+            <tr><td>Job description</td><td><?=$job_detail['Post_Description']?></td></tr>
+            <tr><td>Wage per month</td><td><?=$job_detail['wage_per_month']?></td></tr>
+            <tr><td>Place of work</td><td><?=$job_detail['place_of_work']?></td></tr>
+            <tr><td>Company name</td><td><?=$job_detail['company_name']?></td></tr>
+            <tr><td>Counter person</td><td><?=$job_detail['counter_person']?></td></tr>
+            <tr><td>Email</td><td><?=$job_detail['email']?></td></tr>
+            <tr><td>Phone number</td><td><?=$job_detail['phone']?></td></tr>
+        </table>
+	</div>
 </div>
+
 
 </body>
 </html>
