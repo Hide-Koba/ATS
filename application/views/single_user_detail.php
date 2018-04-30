@@ -84,6 +84,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<option value="4" <?php echo $list->Status==4?"Selected":"" ?>>Selected</option>
 				</select>
 		<input type="button" value="Download file" onclick="location='https://localhost/ats/uploads/<?php echo $list->cv_file_name?>"/>
+		<?php
+		if ($list->job_id>0){
+			?>
+			<div>
+				This person apply with below job
+				<table>
+					
+				</table>
+			</div>
+			<?php
+		}
+		?>
 	</div>
 </div>
 <script type="text/javascript">
