@@ -139,7 +139,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		function changeStatus(value,id){
 			//console.log(id)
 			$.ajax({
-				url:'candidate_controller/status',
+				//url:'candidate_controller/status',
+				url:'status',
 				type:'POST',
 				dataType:'text',
 				data:{
