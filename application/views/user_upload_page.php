@@ -94,7 +94,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <input type="file" name="resume" id="resume" required> <br /></td></tr>
                     </table>
                     
-                    <br />
+					<br />
+					<?php
+					if (isset($job_id)){
+						?>
+						<input type='hidden' name='job_id' id='job_id' value='<?=$job_id?>' />
+						<?php
+					}else{
+						?>
+						<input type='hidden' name='job_id' id='job_id' value='-1' />
+						<?php
+					}
+					?>
                     <input type="submit" name="submit" value="Submit">
                 </form>
 	</div>

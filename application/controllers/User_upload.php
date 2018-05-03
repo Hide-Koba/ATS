@@ -25,7 +25,6 @@ class User_upload extends CI_Controller {
         }
 	public function index()
 	{
-        echo 'test updating';
                 $this->load->Model('User_uploads');
                 $data = $this->input->post();
                 //var_dump($data);
@@ -51,6 +50,7 @@ class User_upload extends CI_Controller {
 
                         //Save data
                         $user_input = $this->input->post();
+                        $user_input['job_id'] = (int)$user_input['job_id'];
                         $user_input['cv_file_name'] = $data['upload_data']['file_name'];
                         $result = $this->User_uploads->save($user_input);
                         
@@ -61,6 +61,9 @@ class User_upload extends CI_Controller {
                 $job_pos = $this->User_uploads->get_jobpositions();
                 $body = array();
                 $body['job_pos'] = $job_pos;
+                if (isset($_GET['job_id'])){
+                    $body['job_id'] = $_GET['job_id'];
+                }
 		$this->load->view('user_upload_page.php',$body);
 	}
         public function upload_success(){

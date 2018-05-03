@@ -82,6 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <tr><td>Email</td><td><?=$job_detail['email']?></td></tr>
             <tr><td>Phone number</td><td><?=$job_detail['phone']?></td></tr>
         </table>
+        <a href="../../User_upload/?job_id=<?=$job_detail['id']?>">Apply to this job</a>
 	</div>
 </div>
 

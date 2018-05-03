@@ -104,30 +104,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<option value="4" <?php echo $item->Status==4?"Selected":"" ?>>Selected</option>
 				</select>
 			</td>
-			<!-- <td><?php if($item->Status==1) { ?>
-						<button type="submit" name="view">Received</button>
-					
-						<?php } elseif($item->Status==2){?>
-						
-						<button type="submit" name="view">Reviewed</button>
-					
-					
-
-                   <?php } 
-                   elseif ($item->Status==3) {?>
-                    	<button type ="submit" name="view">Interviewed</button>
-                    
-
-              
-                    <?php } 
-                    elseif($item->Status==4){
-
-                    	?> 
-                    	<button type = "submit" name="view">Selected</button>
-                    	<?php
-                    }
-                    ?>
-					</td> -->
 			<td><a href="<?php echo base_url('index.php/candidate_controller/single_user_detail/').$item->id ?>"><button type="submit" name="view">view</button></a>
 		</tr>
 		<?php endforeach;?>

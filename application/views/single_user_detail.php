@@ -85,12 +85,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</select>
 		<input type="button" value="Download file" onclick="location='https://localhost/ats/uploads/<?php echo $list->cv_file_name?>"/>
 		<?php
-		if ($list->job_id>0){
+		var_dump($job_data);
+		if ($job_data['id']){
 			?>
 			<div>
 				This person apply with below job
 				<table>
-					
+					<th>Job ID</th>
+					<th>Title</th>
+					<th>Description</th>
+					<th>Wage</th>
+					<th>Place of work</th>
+					<th>Company name</th>
+					<th>Counter person</th>
+					<th>Contact</th>
+					<tr>
+						<td><?=$job_data['id']?></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
 				</table>
 			</div>
 			<?php

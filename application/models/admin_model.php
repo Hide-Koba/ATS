@@ -21,6 +21,7 @@ class Admin_model extends CI_Model {
 
 	public function user_list($username,$password)
 	{
+		//print_r($password);die;
 		$this->db->select('id');
 		$this->db->from('mac_users');
 		$this->db->where('username',$username);

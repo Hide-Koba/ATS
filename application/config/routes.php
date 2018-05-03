@@ -51,5 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'Login_controller';
 $route['Login_controller/add_admin_user']='Login_controller/add_admin_user';
+$route['Candidate_controller/index']='Candidate_controller/index';
+$route['Candidate_controller/single_user_detail']='Candidate_controller/single_user_detail';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

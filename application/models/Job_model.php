@@ -21,7 +21,7 @@ class Job_model extends CI_Model {
 
 	public function get_list(){
 		$this->db->select('*');
-		$this->db->from('job_post');
+		$this->db->from('Job_post');
 		$query=$this->db->get();
 		$data = array();
 		$tmp = array();
@@ -44,7 +44,7 @@ class Job_model extends CI_Model {
 
 		$retvar = array();
 		$this->db->select('*');
-		$this->db->from('job_post');
+		$this->db->from('Job_post');
 		$this->db->where('id',$id);
 		$query = $this->db->get();
 		$retvar['id'] = $query->row()->id;
