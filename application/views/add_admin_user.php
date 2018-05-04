@@ -1,55 +1,43 @@
-<html>
-<head>
-	<title>ATS</title>
-	    <style type="text/css">
-        .abc{
-          border: 2px solid;
-          position:fixed;
-          top:30%;
-          left:40%;
-          width:250px;
-        }
-    </style>
-</head>
-<body>
-	<h1 align="center"> Add Admin </h1>
-	<div class="abc">
-		<form action="add_admin_user" method="post">
-			<table>
-				<tr>
-					<td>First Name: </td>
-					<td><input type="text" name="first_name"></br></td>
-				</tr>
-				<tr>
-					<td>Last Name: </td>
-					<td><input type="text" name="last_name"></br></td>
-				</tr>
-				<tr>
-					<td>Username: </td>
-					<td><input type="text" name="username" required></br></td>
-				</tr>
-				<tr>
-					<td>Email: </td>
-					<td><input type="email" name="email" required></br></td>
-				</tr>
-				<tr>
-					<td>Address: </td>
-					<td><input type="text" name="address" ></br></td>
-				</tr>
-				<tr>
-					<td>Password: </td>
-					<td><input type="password" name="password" required></br></td>
-				</tr>
-				<tr>
-					<td>Phone No: </td>
-					<td><input type="text" name="phone_number"></br></td>
-				</tr>
-				<tr>
-					<td><button type="submit" name="submit">Submit</button></td>
-				</tr>
-			</table>
-		</form>
-	</div>
+<section class="content">
+	<div class="box box-danger" style="width:500px; margin:0 auto;">
+			<div class="box-header with-border">
+              <h3 class="box-title">Add admin user</h3>
+            </div>
+	            <!-- /.box-header -->
+	            <!-- form start -->
+	            <form action="" role="form" method="post">
+	              <div class="box-body">
+	                <div class="form-group">
+	                  <label for="exampleInputText" required>First Name</label>
+	                  <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
+	                </div>
+	                <div class="form-group">
+	                  <label for="exampleInputText" required>Last Name</label>
+	                  <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+	                </div>
+	                <div class="form-group">
+	                  <label for="exampleInputEmail1" required>Email address</label>
+	                  <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter email">
+	                </div>
+	                <div class="form-group">
+	                  <label for="exampleInputPassword" required>Password</label>
+	                  <input type="password" class="form-control" id="exampleInputPassword" name="password" placeholder="Enter password">
+	                </div>
+	                 <div class="form-group">
+	                  <label for="exampleInputText">Address</label>
+	                  <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+	                </div>
+	                 <div class="form-group">
+	                  <label for="exampleInputText">Phone number</label>
+	                  <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone number">
+	                </div>
+	              </div>
+	              <!-- /.box-body -->
 
-</body>
-</html>
+	              <div class="box-footer">
+	                <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
+	              </div>
+	            </form>
+	          </div>
+</section>	
+</div>

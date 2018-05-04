@@ -68,7 +68,8 @@ class Login_controller extends CI_Controller {
 			echo $msg;
 
 		}else{
-			$this->load->view("add_admin_user");
+			$this->template->load("template","add_admin_user");
+			// $this->load->view("add_admin_user");
 		}
 
 	}
@@ -84,5 +85,9 @@ class Login_controller extends CI_Controller {
 	// 		$this->load->view('register');
 	// 	}
 	// }
+	 public function logout(){
+	 	$this->session->sess_destroy();
+	 	redirect("Login_controller",'refresh');
+	 }
 
 }

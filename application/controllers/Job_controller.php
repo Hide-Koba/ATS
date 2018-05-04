@@ -33,7 +33,8 @@ class Job_controller extends CI_Controller {
 		//Retrieve Data
 		$job_list = $this->Job_model->get_list();
 		$body["job_data"] = $job_list;
-		$this->load->view('Job_listing',$body);
+		//$this->load->view('Job_listing',$body);
+		$this->template->load('front_template','job_listing',$body);
 	}
 
 	public function detail($id=null){
@@ -48,7 +49,8 @@ class Job_controller extends CI_Controller {
 			exit();
 		}
 
-		$this->load->view('Job_detail',$data);
+		$this->template->load('front_template','Job_detail',$data);
+		//$this->load->view('Job_detail',$data);
 	}
 
 	public function add(){
@@ -61,11 +63,11 @@ class Job_controller extends CI_Controller {
 		}else{
 			
 		}
-		$this->load->Model('User_uploads');
-		$job_pos = $this->User_uploads->get_jobpositions();
+		//$this->load->Model('User_uploads');
+		//$job_pos = $this->User_uploads->get_jobpositions();
 		$body = array();
-		$body['job_pos'] = $job_pos;
-		$this->load->view('Job_Adding',$body);
+		//$body['job_pos'] = $job_pos;
+		$this->template->load('front_template','user_upload_page');
 	}
 
 	// public function register()

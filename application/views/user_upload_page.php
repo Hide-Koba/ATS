@@ -1,74 +1,74 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>MACS Technology Applicant Tracking System</title>
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h3 class="box-title text-red" style="width:500px; margin:0 auto;">Apply for Job</h3>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      </ol>
+    </section>
 
-	<style type="text/css">
+<section class="content">
+<div class="box box-danger" style="width:500px; margin:0 auto;">
 
-	::selection { background-color: #E13300; color: white; }
-	::-moz-selection { background-color: #E13300; color: white; }
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form action="" role="form" method="post">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="exampleInputText" required>First Name</label>
+                  <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputText" required>Last Name</label>
+                  <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1" required>Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter email">
+                </div>
+                 <div class="form-group">
+                  <label for="exampleInputText">Address</label>
+                  <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+                </div>
+                 <div class="form-group">
+                  <label for="exampleInputText">Phone number</label>
+                  <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone number">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputFile">File input</label>
+                  <input type="file" name="resume" id="resume">
 
-	body {
-		background-color: #fff;
-		margin: 40px;
-		font: 13px/20px normal Helvetica, Arial, sans-serif;
-		color: #4F5155;
-	}
+                  <p class="help-block">Upload CV *Docx, PDF, Doc</p>
+                </div>
+                <div class="form-group">
+                	<label>Applied Position</label>
+	                <select name="Job_Pos">
+								<?php
+								foreach($job_pos as $each){
+								?>
+									<option value="<?=$each['id']?>"><?=$each['job_title']?></option>
+								<?php
+								}
+								?>
+									
+					</select>
+				</div>
+              </div>
+              <!-- /.box-body -->
 
-	a {
-		color: #003399;
-		background-color: transparent;
-		font-weight: normal;
-	}
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
+              </div>
+            </form>
+          </div>
 
-	h1 {
-		color: #444;
-		background-color: transparent;
-		border-bottom: 1px solid #D0D0D0;
-		font-size: 19px;
-		font-weight: normal;
-		margin: 0 0 14px 0;
-		padding: 14px 15px 10px 15px;
-	}
 
-	code {
-		font-family: Consolas, Monaco, Courier New, Courier, monospace;
-		font-size: 12px;
-		background-color: #f9f9f9;
-		border: 1px solid #D0D0D0;
-		color: #002166;
-		display: block;
-		margin: 14px 0 14px 0;
-		padding: 12px 10px 12px 10px;
-	}
+</section>
 
-	#body {
-		margin: 0 15px 0 15px;
-	}
 
-	p.footer {
-		text-align: right;
-		font-size: 11px;
-		border-top: 1px solid #D0D0D0;
-		line-height: 32px;
-		padding: 0 10px 0 10px;
-		margin: 20px 0 0 0;
-	}
-
-	#container {
-		margin: 10px;
-		border: 1px solid #D0D0D0;
-		box-shadow: 0 0 8px #D0D0D0;
-	}
-	</style>
-</head>
-<body>
-
+<!-- 
 <div id="container">
-	<h1>Job Applciation Upload page</h1>
 
 	<div id="body">
                 <form method="POST" enctype="multipart/form-data" action="">
@@ -97,10 +97,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <br />
                     <input type="submit" name="submit" value="Submit">
                 </form>
-	</div>
-
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
-</div>
+	</div> -->
+<!-- 
+	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p> -->
+<!-- </div>
 
 </body>
-</html>
+</html> -->

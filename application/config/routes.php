@@ -49,7 +49,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'Login_controller';
+$route['default_controller'] = 'job_controller';
+$route['admin']='login_controller';
+$route['Login_controller']='login_controller/index';
 $route['Login_controller/add_admin_user']='Login_controller/add_admin_user';
 $route['Candidate_controller/index']='Candidate_controller/index';
 $route['Candidate_controller/single_user_detail']='Candidate_controller/single_user_detail';
