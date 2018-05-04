@@ -2,7 +2,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h3 class="box-title text-blue">Latest Jobs</h3>
+      <h3 class="box-title text-red">Latest Jobs</h3>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       </ol>
@@ -12,7 +12,7 @@
 	<?php
 	foreach($job_data as $each){
 	?>
-   	<div class="box" style="width:500px;">
+   	<div class="box" style="width:700px;">
         <div class="box-header with-border">
           <h3 class="box-title"><a href="<?=base_url();?>index.php/Job_controller/Detail/<?=$each['id']?>"><?php echo $each['Post_Title']?></a></h3>
 

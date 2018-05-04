@@ -38,120 +38,89 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-red-light sidebar-mini">
-<div class="wrapper">
+<body class="layout-top-nav skin-red" style="height: auto; min-height: 100%;">
+<div class="wrapper" style="height: auto; min-height: 100%;">
 
   <header class="main-header">
-    <!-- Logo -->
-    <a href="index2.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>TS</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>A</b>TS</span>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../../index2.html" class="navbar-brand"><b>A</b>TS</a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <i class="fa fa-bars"></i>
+          </button>
+        </div>
 
-          <!-- Control Sidebar Toggle Button -->
-<!--           <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li> -->
-        </ul>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
+            </div>
+          </form>
+        </div>
+        <!-- /.navbar-collapse -->
       </div>
+      <!-- /.container-fluid -->
     </nav>
   </header>
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      <!-- /.search form -->
-    </section>
-    <!-- /.sidebar -->
-  </aside>
+  <div id="contents"><?= $contents ?></div>
+  <footer class="main-footer">
+    <div class="container">
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 2.4.0
+      </div>
+      <strong>Copyright © 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+      reserved.
+    </div>
+    <!-- /.container -->
+  </footer>
+</div>
+<!-- ./wrapper -->
+    <!-- ./wrapper -->
+
+    <!-- jQuery 3 -->
+    <script src="<?=base_url();?>admin_css/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="<?=base_url();?>admin_css/bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="<?=base_url();?>admin_css/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Morris.js charts -->
+    <script src="<?=base_url();?>admin_css/bower_components/raphael/raphael.min.js"></script>
+    <script src="<?=base_url();?>admin_css/bower_components/morris.js/morris.min.js"></script>
+    <!-- Sparkline -->
+    <script src="<?=base_url();?>admin_css/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- jvectormap -->
+    <script src="<?=base_url();?>admin_css/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="<?=base_url();?>admin_css/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="<?=base_url();?>admin_css/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="<?=base_url();?>admin_css/bower_components/moment/min/moment.min.js"></script>
+    <script src="<?=base_url();?>admin_css/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- datepicker -->
+    <script src="<?=base_url();?>admin_css/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="<?=base_url();?>admin_css/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <!-- Slimscroll -->
+    <script src="<?=base_url();?>admin_css/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="<?=base_url();?>admin_css/bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="<?=base_url();?>admin_css/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="<?=base_url();?>admin_css/dist/js/pages/dashboard.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="<?=base_url();?>admin_css/dist/js/demo.js"></script>
+  </div>
 
 
-    
-  <!-- End of header -->
-
-
-
-
-
-    <div id="contents"><?= $contents ?></div>
-    
-
-
- <!-- End of body content -->
-
-
-    <div id="footer">  <!-- /.content-wrapper -->
-		  <footer class="main-footer">
-		    <div class="pull-right hidden-xs">
-		      <b>Version</b> 2.4.0
-		    </div>
-		    <strong>Copyright &copy; 2014-2016 </strong> All rights
-		    reserved.
-		  </footer>
-
-		 
-		  <!-- /.control-sidebar -->
-		  <!-- Add the sidebar's background. This div must be placed
-		       immediately after the control sidebar -->
-		  <div class="control-sidebar-bg"></div>
-		</div>
-		<!-- ./wrapper -->
-
-		<!-- jQuery 3 -->
-		<script src="<?=base_url();?>admin_css/bower_components/jquery/dist/jquery.min.js"></script>
-		<!-- jQuery UI 1.11.4 -->
-		<script src="<?=base_url();?>admin_css/bower_components/jquery-ui/jquery-ui.min.js"></script>
-		<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-		<script>
-		  $.widget.bridge('uibutton', $.ui.button);
-		</script>
-		<!-- Bootstrap 3.3.7 -->
-		<script src="<?=base_url();?>admin_css/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-		<!-- Morris.js charts -->
-		<script src="<?=base_url();?>admin_css/bower_components/raphael/raphael.min.js"></script>
-		<script src="<?=base_url();?>admin_css/bower_components/morris.js/morris.min.js"></script>
-		<!-- Sparkline -->
-		<script src="<?=base_url();?>admin_css/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-		<!-- jvectormap -->
-		<script src="<?=base_url();?>admin_css/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-		<script src="<?=base_url();?>admin_css/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-		<!-- jQuery Knob Chart -->
-		<script src="<?=base_url();?>admin_css/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
-		<!-- daterangepicker -->
-		<script src="<?=base_url();?>admin_css/bower_components/moment/min/moment.min.js"></script>
-		<script src="<?=base_url();?>admin_css/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-		<!-- datepicker -->
-		<script src="<?=base_url();?>admin_css/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-		<!-- Bootstrap WYSIHTML5 -->
-		<script src="<?=base_url();?>admin_css/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-		<!-- Slimscroll -->
-		<script src="<?=base_url();?>admin_css/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-		<!-- FastClick -->
-		<script src="<?=base_url();?>admin_css/bower_components/fastclick/lib/fastclick.js"></script>
-		<!-- AdminLTE App -->
-		<script src="<?=base_url();?>admin_css/dist/js/adminlte.min.js"></script>
-		<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-		<script src="<?=base_url();?>admin_css/dist/js/pages/dashboard.js"></script>
-		<!-- AdminLTE for demo purposes -->
-		<script src="<?=base_url();?>admin_css/dist/js/demo.js"></script>
-	</div>
 </body>
-</html>
