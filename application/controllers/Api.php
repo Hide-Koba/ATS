@@ -38,4 +38,31 @@ class Api extends CI_Controller {
         echo $retvar;
         
     }
+
+    public function job_list(){
+        $this->load->model('Job_model','jm');
+        $list = $this->jm->get_list();
+        $json_list = json_encode($list);
+        header("Content-type:application/json");
+        echo $json_list;
+    }
+
+    public function job_detail(){
+        $detail = array();
+        if (isset($_GET['id'])){
+            $id = $_GET['id'];
+        }else{
+            $id=null;
+        }
+        
+        if ($id===null){
+            $json_detail = json_encode($detail);
+        }else{
+            $this->load->model('Job_model','jm');
+            $detail = $this->jm->get_detail($id);
+            $json_detail = json_encode($detail);
+        }
+        header("Content-type:application/json");
+        echo $json_detail;
+    }
 }

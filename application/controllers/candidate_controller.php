@@ -37,6 +37,15 @@ class Candidate_Controller extends CI_Controller {
 	public function single_user_detail($id){
 		$this->load->model('Admin_model');
 		$data['list']=$this->Admin_model->list_single_user_detail($id);
+		$this->load->model('Job_model');
+		$job_data = array();
+		//var_dump($data['list']->job_id);
+		$job_id = (int)$data['list']->job_id;
+		if ($job_id!==0){
+			
+			$job_data = $this->Job_model->get_detail((int)$data['list']->job_id);
+		}
+		$data['job_data'] = $job_data;
 		$this->template->load("template","single2",$data);
 		//$this->load->view("single2",$data);
 	}
