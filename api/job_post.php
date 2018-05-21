@@ -1,15 +1,16 @@
 <?php
          $dbhost = 'localhost';
-         $dbuser = 'root';
-         $dbpass = '';
-         $dbname = 'ATS';
+         $dbuser = 'cybersyd_ats';
+         $dbpass = '@gm3BX9wbuay';
+         $dbname = 'cybersyd_ats';
          $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);
          //$conn = mysqli_connect("localhost", "cybersyd_ats", "@gm3BX9wbuay", "cybersyd_ats");
    
          if(! $conn ) {
             die('Could not connect: ' . mysqli_error());
          }
-         $sql = 'SELECT jp.id,jp.Post_Title,jp.short_description,jp.Post_Description,jp.wage_per_month,jp.place_of_work,jb_p.position FROM Job_post as jp
+         //$sql = 'SELECT jp.id,jp.Post_Title,jp.Post_Description,jp.wage_per_month,jp.place_of_work,jb_p.job_title FROM Job_post as jp Join Job_Position as jb_p on jb_p.id=jp.Job_Pos';
+            $sql = 'SELECT jp.id,jp.Post_Title,jp.short_description,jp.Post_Description,jp.wage_per_month,jp.place_of_work,jb_p.position FROM Job_post as jp
             Join Job_Position as jb_p on jb_p.id=jp.Job_Pos';
          $result = mysqli_query($conn, $sql);
 

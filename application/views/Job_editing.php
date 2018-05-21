@@ -16,41 +16,42 @@
             <form action="" role="form" method="post">
               <div class="box-body">
                 <div class="form-group">
+                <input type="hidden" id="id" name="id" value="<?=$job_detail['id']?>">
                   <label for="exampleInputText" required>Post Title</label>
-                  <input type="text" class="form-control" id="Post_Title" name="Post_Title" placeholder="Post Title">
+                  <input type="text" class="form-control" id="Post_Title" name="Post_Title" placeholder="Post Title" value="<?=$job_detail['Post_Title']?>">
 				  
                 </div>
                 <div class="form-group">
                   <label for="exampleInputText" required>Job description</label>
-				  <textarea name='Post_Description' id='Post_Description' class="form-control" required /></textarea>
+				  <textarea name='Post_Description' id='Post_Description' class="form-control" required /><?=$job_detail['Post_Description']?></textarea>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1" required>Wage per month</label>
-                  <input type="email" class="form-control" id="wage_per_month" name="wage_per_month" placeholder="Wage per month">
+                  <input type="text" class="form-control" id="wage_per_month" name="wage_per_month" placeholder="Wage per month" value="<?=$job_detail['wage_per_month']?>">
                 </div>
                  <div class="form-group">
                   <label for="exampleInputText">Place of work</label>
-                  <input type="text" class="form-control" id="place_of_work" name="place_of_work" placeholder="place of work">
+                  <input type="text" class="form-control" id="place_of_work" name="place_of_work" placeholder="place of work" value="<?=$job_detail['place_of_work']?>">
                 </div>
                  <div class="form-group">
                   <label for="exampleInputText">Company name</label>
-                  <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Company name">
+                  <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Company name" value="<?=$job_detail['company_name']?>">
                 </div>
 				<div class="form-group">
                   <label for="exampleInputText">Dead Line</label>
-                  <input type="Date" class="form-control" id="dead_line" name="dead_line" placeholder="Dead line">
+                  <input type="Date" class="form-control" id="dead_line" name="dead_line" placeholder="Dead line" value="<?=$job_detail['dead_line']?>">
                 </div>
 				<div class="form-group">
                   <label for="exampleInputText">Counter person name</label>
-                  <input type="text" class="form-control" id="counter_person_name" name="counter_person_name" placeholder="Counter person name">
+                  <input type="text" class="form-control" id="counter_person_name" name="counter_person_name" placeholder="Counter person name" value="<?=$job_detail['counter_person']?>">
                 </div>
 				<div class="form-group">
                   <label for="exampleInputText">email</label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="email">
+                  <input type="text" class="form-control" id="email" name="email" placeholder="email" value="<?=$job_detail['email']?>">
                 </div>
 				<div class="form-group">
                   <label for="exampleInputText">Phone</label>
-                  <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone">
+                  <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" value="<?=$job_detail['phone']?>">
                 </div>
                 </div>
                 <div class="form-group">
@@ -70,7 +71,7 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
+                <button type="submit" class="btn btn-primary" name="Update" value="Update">Update</button>
               </div>
             </form>
           </div>

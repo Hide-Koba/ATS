@@ -10,6 +10,13 @@
 
    <section class="content">
 	<?php
+  if (count($job_data)===0){
+    ?>
+    <div>
+      <h1>No job registered in this search condition. Please try again.</h1>
+    </div>
+    <?php
+  }else{
 	foreach($job_data as $each){
 	?>
    	<div class="box" style="width:700px;">
@@ -35,10 +42,15 @@
         <!-- /.box-footer-->
       </div>
 		<?php
-			}
+      }
+    }
 		?>
 		</section>
+    <div>
+    <a href="" target="_blank"><img width="50px" src="<?=base_url();?>admin_css/playstore_icon.png" />Download Android App from here</a>
+    </div>
 	</div>
+  
 
 </body>
 </html>

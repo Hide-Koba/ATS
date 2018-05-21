@@ -1,5 +1,9 @@
 <?php
-    $con = mysqli_connect("localhost", "root", "", "ATS");
+$dbhost = 'localhost';
+$dbuser = 'cybersyd_ats';
+$dbpass = '@gm3BX9wbuay';
+$dbname = 'cybersyd_ats';
+$con = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);
     
     $username = $_POST['username'];
       // $username='admin';

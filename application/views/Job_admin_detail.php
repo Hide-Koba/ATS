@@ -1,8 +1,8 @@
 <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h3 class="box-title text-blue">Job Detail</h3>
+      <h3 class="box-title text-blue">Edit job detail</h3>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       </ol>
@@ -31,7 +31,7 @@
 			</div>
 			<!-- /.box-body -->
 			<div class="box-footer">
-			 <a href="<?= base_url()?>User_upload/"> <button type="button" class="btn btn-block btn-info" style="width:60px;">Apply</button></a>
+			 <a href="<?= base_url()?>Job_controller/admin_edit/<?=$job_detail['id']?>"> <button type="button" class="btn btn-block btn-info" style="width:60px;">Update</button></a>
 			</div>
 			<!-- /.box-footer-->
 		</div>

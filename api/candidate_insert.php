@@ -16,9 +16,9 @@
          // $phone_number="1221";
 
          $dbhost = 'localhost';
-         $dbuser = 'root';
-         $dbpass = '';
-         $dbname = 'ATS';
+         $dbuser = 'cybersyd_ats';
+         $dbpass = '@gm3BX9wbuay';
+         $dbname = 'cybersyd_ats';
          $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);
    
          if(! $conn ) {

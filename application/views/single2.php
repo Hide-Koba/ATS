@@ -6,7 +6,7 @@
             <!-- Add the bg color to the header using any of the bg-* classes -->
             <div class="widget-user-header bg-yellow">
               <div class="widget-user-image">
-                <img class="img-circle" src="../dist/img/user7-128x128.jpg" alt="User Avatar">
+                <img class="img-circle" src="<?=base_url();?>admin_css/dist/img/user7-128x128.jpg" alt="User Avatar">
               </div>
               <!-- /.widget-user-image -->
               <h3 class="widget-user-username">
@@ -22,7 +22,7 @@
               </ul>
             </div>
             <?php
-            if ($job_data['id']){  
+            if (isset($job_data['id'])){  
 			      ?>
             <div class="box-footer no-padding">
               <h4>This person applys through below job posting.</h4>
