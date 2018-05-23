@@ -22,13 +22,15 @@ class Job_controller extends CI_Controller {
 	function __construct()
     {
         parent::__construct();
-        $this->load->model('Admin_model');
+		$this->load->model('Admin_model');
+		$this->load->helper(array('form', 'url'));
+
     } 
     
 	public function index()
 	{
 		$query = $this->input->get();
-		var_dump($query);
+		//var_dump($query);
 		//Load model
 		$this->load->Model('Job_model');
 		//Retrieve Data
@@ -113,25 +115,49 @@ class Job_controller extends CI_Controller {
 	}
 
 	public function file_upload(){
-		
-		$this->load->library('upload');
-		var_dump($this->input->post());
 		$this->load->Model('Job_model');
-		if ( ! $this->upload->do_upload('fileToUpload')){
-			//redirect("/Job_controller/admin_index");
-			echo "not upload detected";
-		}else{
-			echo "upload detected";
-		}
 		
-		exit();
-		if ($this->input->post()){
-			$this->load->library('upload');
-			echo 'uplaod detected';
-			var_dump($this->data->post());
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'csv';
+		$this->load->library('upload', $config);
+		if (!$this->upload->do_upload('userfile')){
+			var_dump($this->upload->display_errors());
+			//redirect("/Job_controller/admin_index");
+			echo "Error Occured. Please back the browser and fix the problem.";
 		}else{
+			$name = $this->upload->data('file_name');
+			$path = $this->upload->data('file_path');
+			$csv = array_map('str_getcsv', file($path.$name));
 			
+			//retrieve the first line
+			$header = array();
+			$cnt = 0;
+			foreach ($csv as $each){
+				foreach ($each as $individual){
+					array_push($header,$individual);
+				}
+				break;
+			}
+			$ccnt=0;
+			foreach ($csv as $line){
+				$tmp = array();
+				if ($cnt===0){
+					$cnt++;
+					continue;
+				}
+				foreach($line as $individual){
+					$tmp[$header[$ccnt]] = $individual;
+					$ccnt++;
+				}
+				$tmp['Job_Pos'] = 1;
+				
+				$result = $this->Job_model->add($tmp);
+				$ccnt=0;
+				$cnt++;
+			}
 		}
+
+		redirect("/Job_controller/admin_index");
 	}
 
 	// public function register()

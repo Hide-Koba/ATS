@@ -59,25 +59,24 @@ class Job_model extends CI_Model {
 			return $retvar;
 		}
 
-		echo "query start";
 		$this->db->select('*');
 		$this->db->from('Job_post');
 		switch ($query['type']){
 			case "salary":
-				echo "case salary";
+				//echo "case salary";
 				$q = (double)$query['key'];
 				$this->db->where('wage_per_month >', $q);
 				$this->db->order_by('wage_per_month',$query['order']);
 				break;
 
 			case "location":
-				echo "case location";
+				//echo "case location";
 				$q = $query['key'];
 				$this->db->where('place_of_work',$q);
 				$this->db->order_by('dead_line',$query['order']);
 				break;
 			case "specialization":
-				echo "case specification";
+				//echo "case specification";
 				$q = '%'.$query['key'].'%';
 				$this->db->where('Post_Description like ',$q);
 				$this->db->order_by('dead_line',$query['order']);

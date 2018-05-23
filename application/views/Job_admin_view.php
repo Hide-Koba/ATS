@@ -33,9 +33,9 @@
             <!-- /.box-body -->
           </div>
           <div>
-            <form action="../file_upload/" method="post" enctype="multipart/form-data" >
+            <?php echo form_open_multipart(base_url().'Job_controller/file_upload/');?>
               Upload CSV file from here
-              <input type="file" name="fileToUpload" id="fileToUpload" />
+              <input type="file" name="userfile" id="userfile" />
               <input type="hidden" name="test" value="test123" />
               <input type="Submit" value="Submit">
             </form>
