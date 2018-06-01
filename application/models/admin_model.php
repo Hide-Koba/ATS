@@ -80,4 +80,22 @@ class Admin_model extends CI_Model {
 			return $this->add_user($data);
 		}
 
+		public function get_user_id_by_name($username=null){
+			if ($username===null){
+				return false;
+			}
+			$this->db->select('id');
+            $this->db->from('mac_users');
+            $this->db->where('username',$username);
+            $query=$this->db->get();
+            return $query->row();
+		}
+
+		public function update_password($id,$pw){
+			var_dump($id);
+			$this->db->where('id',$id);
+			return $this->db->update('mac_users',array('password'=>$pw));
+			
+		}
+
 }

@@ -46,7 +46,6 @@ class Login_controller extends CI_Controller {
 		else
 		{
 			$this->load->view('login_view');
-
 		}
 		
 	}
@@ -67,7 +66,26 @@ class Login_controller extends CI_Controller {
 			$msg['message']=$this->Admin_model->add_admin_user($data);
 		}
 		$this->template->load("template","add_admin_user",$msg);
+	}
 
+	public function update_password(){
+		$msg['message'] = "";
+		if ($this->input->post()){
+			$data =$this->input->post();
+			if ($data['password']===$data['confirm_password']){
+				$username = $_SESSION['username'];
+				$id = $this->Admin_model->get_user_id_by_name($username);
+				$msg['message'] = $this->Admin_model->update_password($id->id,md5($data['password']));
+				if ($msg['message']===true){
+					$msg['message'] = '';
+				}
+			}else{
+				$msg['message']="Password does not match";
+			}
+		}else{
+			//$msg['message'] = "No request";
+		}
+		$this->template->load("template","update_password",$msg);
 	}
 
 	 public function logout(){

@@ -113,7 +113,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?=base_url();?>Login_controller/add_admin_user"><i class="fa fa-circle-o"></i> Add user</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> change password</a></li>
+            <li><a href="<?=base_url();?>Login_controller/update_password"><i class="fa fa-circle-o"></i> change password</a></li>
             <li><a href="<?= base_url();?>Login_controller/logout"><i class="fa fa-circle-o"></i> Logout</a></li>
           </ul>
         </li>
