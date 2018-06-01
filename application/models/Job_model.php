@@ -29,6 +29,7 @@ class Job_model extends CI_Model {
 			$tmp['id'] = $each->id;
 			$tmp['Post_Title'] = $each->Post_Title;
 			$tmp['short_description']=$each->short_description;
+			$tmp['Post_Description']=$each->Post_Description;
 			$tmp['place_of_work'] = $each->place_of_work;
 			$tmp['wage_per_month'] = $each->wage_per_month;
 			array_push($data,$tmp);

@@ -64,4 +64,16 @@ class Admin_model extends CI_Model {
         	return "success";
         }
 
+        public function add_post($data){
+        	if($this->db->insert('Job_post',$data))
+        		return "true";
+        	return "false";
+        }
+
+        public function add_user($data){
+        	if($this->db->insert('mac_users',$data))
+        		return "true";
+        	return "false";
+        }
+
 }
