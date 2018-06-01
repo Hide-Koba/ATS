@@ -30,7 +30,6 @@ class User_upload extends CI_Controller {
                 //var_dump($data);
                 //echo 'this is new page';
                 if ($this->input->post()){
-                    var_dump($this->input->post());
                     //post script
                     $config['upload_path']          = './uploads/';
                     $config['allowed_types']        = 'gif|jpg|png|jpeg|doc|docx|pdf|JPG|JPEG';
@@ -50,11 +49,16 @@ class User_upload extends CI_Controller {
 
                         //Save data
                         $user_input = $this->input->post();
-                        $user_input['job_id'] = (int)$user_input['job_id'];
+                        $user_input['Job_pos'] = (int)$user_input['Job_Pos'];
                         $user_input['cv_file_name'] = $data['upload_data']['file_name'];
-                        $result = $this->User_uploads->save($user_input);
+                        $candidate_id = $this->User_uploads->save($user_input);
+                        if ($candidate_id){
+                            $this->load->Model('Resume_parse_model','rp');
+                            $this->rp->drive_parser($candidate_id,$user_input['cv_file_name']);
+                        }
                         
-                        redirect('User_upload/upload_success');
+                        
+                        redirect('index.php/User_upload/upload_success');
                     }
                 }
                 //prepare job position
@@ -69,6 +73,62 @@ class User_upload extends CI_Controller {
 	}
         public function upload_success(){
             //$this->load->view('upload_success.php');
-            $this->template->load('front_template','upload_success',$body);
+            //$this->template->load('front_template','upload_success',$body);
+            $this->template->load('front_template','upload_success');
         }
+    
+    public function upload_api(){
+        $this->load->Model('User_uploads');
+        $data = $this->input->post();
+        //var_dump($data);
+        //echo 'this is new page';
+        if ($this->input->post()){
+            //post script
+            $config['upload_path']          = './uploads/';
+            $config['allowed_types']        = 'gif|jpg|png|jpeg|doc|docx|pdf|JPG|JPEG';
+            $config['file_name'] = $this->uuid->v4();
+
+            $this->load->library('upload', $config);
+
+            if ( ! $this->upload->do_upload('resume'))
+            {
+                    $error = array('error' => $this->upload->display_errors());
+                    var_dump($error);
+                    //$this->load->view('user_upload_page', $error);
+                    $output = array(
+                        'status'=>'error',
+                        'message'=>$error
+                    );
+            }
+            else
+            {
+                $data = array('upload_data' => $this->upload->data());
+
+                //Save data
+                $user_input = $this->input->post();
+                $user_input['Job_pos'] = (int)$user_input['Job_Pos'];
+                $user_input['cv_file_name'] = $data['upload_data']['file_name'];
+                $candidate_id = $this->User_uploads->save($user_input);
+                if ($candidate_id){
+                    $this->load->Model('Resume_parse_model','rp');
+                    $this->rp->drive_parser($candidate_id,$user_input['cv_file_name']);
+                }
+                
+                $output = array(
+                    'status'=>'success'
+                );
+            }
+        }else{
+            $output = array(
+                'status'=>'fail',
+                'message'=>'please POST data'
+            );
+            
+        }
+
+        $output = json_encode($output);
+        $this->output
+            ->set_content_type('application/json', 'utf-8')
+            ->set_output($output);
+    }
 }

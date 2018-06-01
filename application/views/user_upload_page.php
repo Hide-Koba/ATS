@@ -13,7 +13,8 @@
 
             <!-- /.box-header -->
             <!-- form start -->
-            <form action="" role="form" method="post">
+            <!--<form action="" role="form" method="post">-->
+            <form action="" enctype="multipart/form-data" method="post" accept-charset="utf-8">
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputText" required>First Name</label>
@@ -25,15 +26,15 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1" required>Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter email">
+                  <input type="email" class="form-control" id="exampleInputEmail1" name="Email" placeholder="Enter email">
                 </div>
                  <div class="form-group">
                   <label for="exampleInputText">Address</label>
-                  <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+                  <input type="text" class="form-control" id="address" name="Address" placeholder="Address">
                 </div>
                  <div class="form-group">
                   <label for="exampleInputText">Phone number</label>
-                  <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone number">
+                  <input type="text" class="form-control" id="phone_number" name="Phone_Number" placeholder="Phone number">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputFile">File input</label>
