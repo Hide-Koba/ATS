@@ -72,8 +72,12 @@ class Admin_model extends CI_Model {
 
         public function add_user($data){
         	if($this->db->insert('mac_users',$data))
-        		return "true";
-        	return "false";
-        }
+        		return "Register Success";
+        	return "Register Fail";
+		}
+		
+		public function add_admin_user($data){
+			return $this->add_user($data);
+		}
 
 }

@@ -22,7 +22,7 @@ class Login_controller extends CI_Controller {
 	function __construct()
     {
         parent::__construct();
-        $this->load->model('Admin_model');
+        $this->load->model('admin_model','Admin_model');
     } 
     
 	public function index()
@@ -52,6 +52,7 @@ class Login_controller extends CI_Controller {
 	}
 
 	public function add_admin_user(){
+		$msg['message']= "";
 		if($this->input->post()){
 			$data=array(
 				'first_name'=>$this->input->post('first_name'),
@@ -63,28 +64,12 @@ class Login_controller extends CI_Controller {
 				'phone_number'=>$this->input->post('phone_number')
 			);
 
-			$msg=$this->Admin_model->add_admin_user($data);
-
-			echo $msg;
-
-		}else{
-			$this->template->load("template","add_admin_user");
-			// $this->load->view("add_admin_user");
+			$msg['message']=$this->Admin_model->add_admin_user($data);
 		}
+		$this->template->load("template","add_admin_user",$msg);
 
 	}
 
-	// public function register()
-	// {
-	// 	if($this->input->post())
-	// 	{
-	// 		$data=$this->admin_model->register($this->input->post());
-	// 	}
-	// 	else
-	// 	{
-	// 		$this->load->view('register');
-	// 	}
-	// }
 	 public function logout(){
 	 	$this->session->sess_destroy();
 	 	redirect("Login_controller",'refresh');
