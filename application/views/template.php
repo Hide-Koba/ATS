@@ -43,7 +43,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="<?=base_url();?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
@@ -71,7 +71,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="admin_css/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="<?=base_url();?>admin_css/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Salil Koirala</p>
@@ -93,9 +93,15 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li class="activetreeview">
-          <a href="<?= base_url();?>candidate_controller">
+          <a href="<?= base_url();?>candidate_controller/">
             <i class="fa fa-files-o"></i>
             <span>List of candidate</span>
+          </a>
+        </li>
+        <li class="activetreeview">
+          <a href="<?= base_url();?>Job_controller/admin_index/">
+            <i class="fa fa-files-o"></i>
+            <span>List of Job posting</span>
           </a>
         </li>
         <li class="treeview">

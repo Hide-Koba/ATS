@@ -64,9 +64,11 @@ class User_upload extends CI_Controller {
                 if (isset($_GET['job_id'])){
                     $body['job_id'] = $_GET['job_id'];
                 }
-		$this->load->view('user_upload_page.php',$body);
+        //$this->load->view('user_upload_page',$body);
+        $this->template->load('front_template','user_upload_page',$body);
 	}
         public function upload_success(){
-            $this->load->view('upload_success.php');
+            //$this->load->view('upload_success.php');
+            $this->template->load('front_template','upload_success',$body);
         }
 }
