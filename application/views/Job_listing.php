@@ -21,7 +21,7 @@
 	?>
    	<div class="box" style="width:700px;">
         <div class="box-header with-border">
-          <h3 class="box-title"><a href="<?=base_url();?>index.php/Job_controller/Detail/<?=$each['id']?>"><?php echo $each['Post_Title']?></a></h3>
+          <h3 class="box-title"><a href="<?=base_url();?>Job_controller/Detail/<?=$each['id']?>"><?php echo $each['Post_Title']?></a></h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">

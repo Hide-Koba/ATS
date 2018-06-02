@@ -104,6 +104,72 @@ class Job_model extends CI_Model {
             $this->db->where('id',$id);
             $query=$this->db->get();
             return $query->row();
-        }
+		}
+		
+		public function get_list_by_q($query){
+			$retvar = array();
+			$flag = true;
+			if (count($query)===0){
+				$flag = false;
+			}
+			if (!isset($query['type'])){
+				$flag = false;
+			}
+			if (!isset($query['key'])){
+				$flag = false;
+			}
+			if (!isset($query['order'])){
+				$flag = false;
+			}
+			if (!$flag){
+				$retvar = $this->get_list();
+				//echo "query fail";
+				return $retvar;
+			}
+	
+			//echo "query start";
+			$this->db->select('*');
+			$this->db->from('Job_post');
+			switch ($query['type']){
+				case "salary":
+					//echo "case salary";
+					$q = (double)$query['key'];
+					$this->db->where('wage_per_month >', $q);
+					$this->db->order_by('wage_per_month',$query['order']);
+					break;
+	
+				case "location":
+					//echo "case location";
+					$q = $query['key'];
+					$this->db->where('place_of_work',$q);
+					$this->db->order_by('dead_line',$query['order']);
+					break;
+				case "specialization":
+					//echo "case specification";
+					$q = '%'.$query['key'].'%';
+					$this->db->where('Post_Description like ',$q);
+					$this->db->order_by('dead_line',$query['order']);
+					break;
+				default:
+					break;
+			}
+			$query=$this->db->get();
+			$data = array();
+			$tmp = array();
+			foreach ($query->result() as $each){
+				$tmp['id'] = $each->id;
+				$tmp['Post_Title'] = $each->Post_Title;
+				$tmp['short_description']=$each->Post_Description;
+				$tmp['place_of_work'] = $each->place_of_work;
+				$tmp['wage_per_month'] = $each->wage_per_month;
+				array_push($data,$tmp);
+			}
+	
+			return $data;
+	
+	
+		}
+	
+	
 
 }

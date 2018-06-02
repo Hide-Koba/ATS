@@ -38,7 +38,7 @@ class Job_controller extends CI_Controller {
 		$job_list = $this->Job_model->get_list_by_q($query);
 		$body["job_data"] = $job_list;
 		//$this->load->view('Job_listing',$body);
-		$this->template->load('front_template','job_listing',$body);
+		$this->template->load('front_template','Job_listing',$body);
 	}
 
 	public function detail($id=null){

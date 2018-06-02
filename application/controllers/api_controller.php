@@ -100,7 +100,7 @@ class Api_controller extends CI_Controller {
         //             'Job_Pos'=>"1",
         //            'email'=>"koirala.salu@gmail.com",
         //             'phone'=>"232323");
-        $this->load->model('Admin_model');
+        $this->load->model('admin_model','Admin_model');
         //print_r($data);die;
         $data['success']=$this->Admin_model->add_post($data);
         echo json_encode($data);
@@ -114,7 +114,7 @@ class Api_controller extends CI_Controller {
                     'phone_number'=>$_POST["phone_number"],
                     'email'=>$_POST['email'],
                     "password"=>md5($_POST['password']));
-        $this->load->model('Admin_model');
+        $this->load->model('admin_model','Admin_model');
         $data['success']=$this->Admin_model->add_user($data);
         echo json_encode($data);
 
