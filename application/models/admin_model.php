@@ -121,4 +121,15 @@ class Admin_model extends CI_Model {
 			
 		}
 
+		public function is_user_exists($username){
+			$this->db->where('username',$username);
+			$this->db->from('mac_users');
+			$count = $this->db->count_all_results();
+			if ($count===0){
+				return false;
+			}else{
+				return true;
+			}
+		}
+
 }

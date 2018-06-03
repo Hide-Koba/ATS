@@ -53,17 +53,25 @@ class Login_controller extends CI_Controller {
 	public function add_admin_user(){
 		$msg['message']= "";
 		if($this->input->post()){
-			$data=array(
-				'first_name'=>$this->input->post('first_name'),
-				'last_name'=>$this->input->post('last_name'),
-				'username'=>$this->input->post('username'),
-				'password'=>$this->input->post('password'),
-				'Address'=>$this->input->post('address'),
-				'Email'=>$this->input->post('email'),
-				'phone_number'=>$this->input->post('phone_number')
-			);
-
-			$msg['message']=$this->Admin_model->add_admin_user($data);
+			$exist = $this->Admin_model->is_user_exists($this->input->post('username'));
+			if ($exist){
+				$msg['message'] = 'User exist. Please use other username';
+			}else{
+				$data=array(
+					'first_name'=>$this->input->post('first_name'),
+					'last_name'=>$this->input->post('last_name'),
+					'username'=>$this->input->post('username'),
+					'password'=>$this->input->post('password'),
+					'Address'=>$this->input->post('address'),
+					'Email'=>$this->input->post('email'),
+					'phone_number'=>$this->input->post('phone_number')
+				);
+	
+				//$msg['message']=$this->Admin_model->add_admin_user($data);
+				$this->Admin_model->add_admin_user($data);
+				$msg['message'] = 'User created. Username: '.$data['username'];
+			}
+			
 		}
 		$this->template->load("template","add_admin_user",$msg);
 	}
