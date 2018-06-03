@@ -47,7 +47,7 @@
 		?>
 		</section>
     <div>
-    <a href="" target="_blank"><img width="50px" src="<?=base_url();?>admin_css/playstore_icon.png" />Download Android App from here</a>
+    <a href="<?=base_url();?>uploads/final-release.apk" target="_blank"><img width="50px" src="<?=base_url();?>admin_css/playstore_icon.png" />Download Android App from here</a>
     </div>
 	</div>
   

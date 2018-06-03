@@ -2,7 +2,7 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h3 class="box-title text-blue">Edit job detail</h3>
+      <h3 class="box-title text-blue">Job detail</h3>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       </ol>
@@ -31,7 +31,21 @@
 			</div>
 			<!-- /.box-body -->
 			<div class="box-footer">
-			 <a href="<?= base_url()?>Job_controller/admin_edit/<?=$job_detail['id']?>"><button type="button" class="btn btn-block btn-info" style="width:60px;">Update</button></a>
+			 <a href="<?= base_url()?>Job_controller/admin_edit/<?=$job_detail['id']?>"><button type="button" class="btn btn-block btn-info" style="">Update details</button></a>
+			 <br />
+			 <?php
+			 	if ($job_detail['status']==="0"){
+					 ?>
+					 <a href="<?= base_url()?>Job_controller/flip_status/<?=$job_detail['id']?>"><button type="button" class="btn btn-block btn-info" style="">Open this job</button></a>
+					 <?php
+				 }else{
+					 ?>
+					 <a href="<?= base_url()?>Job_controller/flip_status/<?=$job_detail['id']?>"><button type="button" class="btn btn-block btn-info" style="">Close this job</button></a>
+					 <?php
+				 }
+			 ?>
+			 <?php
+			 ?>
 			</div>
 			<!-- /.box-footer-->
 		</div>

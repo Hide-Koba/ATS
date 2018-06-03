@@ -41,6 +41,7 @@ class Job_model extends CI_Model {
 			$tmp['place_of_work'] = $each->place_of_work;
 			$tmp['wage_per_month'] = $each->wage_per_month;
 			$tmp['dead_line'] = $each->dead_line;
+			$tmp['status'] = $each->status;
 			array_push($data,$tmp);
 		}
 		
@@ -75,6 +76,15 @@ class Job_model extends CI_Model {
 
 	public function add($data){
 		$result = $this->db->insert('Job_post', $data);
+		return $result;
+	}
+
+	public function edit($data){
+		//var_dump($data);
+		$this->db->set($data);
+		$this->db->where('id',$data['id']);
+			
+		$result = $this->db->update('Job_post');
 		return $result;
 	}
 
@@ -178,7 +188,23 @@ class Job_model extends CI_Model {
 	
 	
 		}
-	
-	
 
+		public function get_status($id){
+			$this->db->select('status');
+			$this->db->where('id',$id);
+			$this->db->from('Job_post');
+			$query = $this->db->get();
+			foreach ($query->result() as $each){
+				$status = $each->status;
+			}
+
+			return $status;
+		}
+
+		public function update_status($id,$status){
+			$this->db->set(array('status'=>$status));
+			$this->db->where('id',$id);
+			
+			$result = $this->db->update('Job_post');
+		}
 }

@@ -101,16 +101,18 @@ class Job_controller extends CI_Controller {
 		if ($this->input->post()){
 			$data = $this->input->post();
 			unset($data['Update']);
+			//var_dump($data);
 			$result = $this->Job_model->edit($data);
+			//var_dump($result);
+			//exit();
 		}
 
 		
 		$data['job_detail'] = $this->Job_model->get_detail($id);	
 		
-		//$this->load->Model('User_uploads');
-		//$job_pos = $this->User_uploads->get_jobpositions();
-		$body = array();
-		//$body['job_pos'] = $job_pos;
+		$this->load->Model('User_uploads');
+		$job_pos = $this->User_uploads->get_jobpositions();
+		$data['job_pos'] = $job_pos;
 		$this->template->load('template','Job_editing',$data);
 	}
 
@@ -158,6 +160,24 @@ class Job_controller extends CI_Controller {
 		}
 
 		redirect("/Job_controller/admin_index");
+	}
+
+	public function flip_status($id=null){
+		$this->load->Model('Job_model');
+		if ($id===null){
+			redirect("/Job_controller/admin_index");
+		}
+
+		$status = $this->Job_model->get_status($id);
+		if ($status==='0'){
+			$updater = 1;
+		}else{
+			$updater = 0;
+		}
+		$status = $this->Job_model->update_status($id,$updater);
+
+		redirect("/Job_controller/admin_detail/".$id);
+
 	}
 
 	// public function register()
