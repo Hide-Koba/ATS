@@ -6,7 +6,7 @@
             <!-- Add the bg color to the header using any of the bg-* classes -->
             <div class="widget-user-header bg-yellow">
               <div class="widget-user-image">
-                <img class="img-circle" src="<?=base_url();?>admin_css/dist/img/user7-128x128.jpg" alt="User Avatar">
+                <!--<img class="img-circle" src="<?=base_url();?>admin_css/dist/img/user7-128x128.jpg" alt="User Avatar">-->
               </div>
               <!-- /.widget-user-image -->
               <h3 class="widget-user-username">
@@ -29,7 +29,7 @@
               <ul class="nav nav-stacked">
                 <li><a href="#">Job ID <span class="pull-right badge bg-blue"><?=$job_data['id']?></span></a></li>
                 <li><a href="#">Title <span class="pull-right badge bg-aqua"><?=$job_data['Post_Title']?></span></a></li>
-                <li><a href="#">Description <span class="pull-right badge bg-green"><?=$job_data['Post_Description']?></span></a></li>
+                <li><a href="#">Description <span><?=$job_data['Post_Description']?></span></a></li>
                 <li><a href="#">Wage <span class="pull-right badge bg-green">$<?=$job_data['wage_per_month']?></span></a></li>
                 <li><a href="#">Place of work <span class="pull-right badge bg-green"><?=$job_data['place_of_work']?></span></a></li>
                 <li><a href="#">Company name <span class="pull-right badge bg-green"><?=$job_data['company_name']?></span></a></li>
