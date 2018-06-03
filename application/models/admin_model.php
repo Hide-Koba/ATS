@@ -40,6 +40,29 @@ class Admin_model extends CI_Model {
 		return false;
 	}
 
+	public function find_id_list_candidate($id){
+		$this->db->select('*');
+		$this->db->from("Resume_Candidate");
+		$this->db->where("applied_job_id",(int)$id);
+		$query=$this->db->get();
+		$tmp = array();
+		$data = array();
+		foreach ($query->result() as $each){
+			$tmp['id'] = $each->id;
+			$tmp['first_name'] = $each->first_name;
+			$tmp['last_name'] = $each->last_name;
+			$tmp['Address'] = $each->Address;
+			$tmp['Email'] = $each->Email;
+			$tmp['Phone_Number'] = $each->Phone_Number;
+			$tmp['Status'] = $each->Status;
+			$tmp['Job_Pos'] = $each->Job_Pos;
+			$tmp['cv_file_name'] = $each->cv_file_name;
+			$tmp['applied_job_id'] = $each->applied_job_id;
+			array_push($data,$tmp);
+		}
+		return $data;
+	}
+
 	public function list_candidate()
         {
                 $this->db->select('id,first_name,last_name,Status');

@@ -50,10 +50,23 @@
 								?>
 									<option value="<?=$each['id']?>"><?=$each['job_title']?></option>
 								<?php
-								}
+                }
+                
 								?>
+                
 									
 					</select>
+          <?php
+                if (isset($_GET['id'])){
+                  ?>
+                  <input type="hidden" id="applied_job_id" name="applied_job_id" value="<?=$_GET['id']?>">
+                  <?php
+                }else{
+                  ?>
+                  <input type="hidden" id="applied_job_id" name="applied_job_id" value="0">
+                  <?php
+                }
+                ?>
 				</div>
               </div>
               <!-- /.box-body -->

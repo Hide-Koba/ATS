@@ -58,18 +58,21 @@ class Job_model extends CI_Model {
 		$this->db->from('Job_post');
 		$this->db->where('id',$id);
 		$query = $this->db->get();
-		$retvar['id'] = $query->row()->id;
-		$retvar['Post_Title'] = $query->row()->Post_Title;
-		$retvar['Post_Description'] = $query->row()->Post_Description;
-		$retvar['status'] = $query->row()->status;
-		$retvar['Job_Pos'] = $query->row()->Job_Pos;
-		$retvar['wage_per_month'] = $query->row()->wage_per_month;
-		$retvar['place_of_work'] = $query->row()->place_of_work;
-		$retvar['company_name'] = $query->row()->company_name;
-		$retvar['dead_line'] = $query->row()->dead_line;
-		$retvar['counter_person'] = $query->row()->counter_person_name;
-		$retvar['email'] = $query->row()->email;
-		$retvar['phone'] = $query->row()->phone;
+		foreach ($query->result() as $each){
+			$retvar['id'] = $each->id;
+			$retvar['Post_Title'] = $each->Post_Title;
+			$retvar['Post_Description'] = $each->Post_Description;
+			$retvar['status'] = $each->status;
+			$retvar['Job_Pos'] = $each->Job_Pos;
+			$retvar['wage_per_month'] = $each->wage_per_month;
+			$retvar['place_of_work'] = $each->place_of_work;
+			$retvar['company_name'] = $each->company_name;
+			$retvar['dead_line'] = $each->dead_line;
+			$retvar['counter_person'] = $each->counter_person_name;
+			$retvar['email'] = $each->email;
+			$retvar['phone'] = $each->phone;
+		}
+		
 
 		return $retvar;
 	}

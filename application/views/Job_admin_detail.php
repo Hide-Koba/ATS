@@ -44,8 +44,25 @@
 					 <?php
 				 }
 			 ?>
+				<div class="box-body">
+				<h3>Applied Candidates</h3>
+				<table border="1">
+				<tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Resume</th></tr>
 			 <?php
+			 //var_dump($candidate_list);
+			 foreach ($candidate_list as $each){
+				?><tr>
+					<td><a href="<?=base_url()?>Candidate_controller/single_user_detail/<?=$each['id']?>">SEE Detail</a></td>
+					<td><?=$each['first_name']?> <?=$each['last_name']?></td>
+					<td><?=$each['Email']?></td>
+					<td><?=$each['Phone_Number']?></td>
+					<td><a href="<?=base_url()?>uploads/<?=$each['cv_file_name']?>">Download Resume</a></td>
+					</tr>
+				<?php
+			 }
 			 ?>
+			 </table>
+			 </div>
 			</div>
 			<!-- /.box-footer-->
 		</div>

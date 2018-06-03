@@ -50,14 +50,13 @@ class User_upload extends CI_Controller {
                         //Save data
                         $user_input = $this->input->post();
                         $user_input['Job_pos'] = (int)$user_input['Job_Pos'];
+                        $user_input['applied_job_id'] = (int)$user_input['applied_job_id'];
                         $user_input['cv_file_name'] = $data['upload_data']['file_name'];
                         $candidate_id = $this->User_uploads->save($user_input);
                         if ($candidate_id){
                             $this->load->Model('Resume_parse_model','rp');
                             $this->rp->drive_parser($candidate_id,$user_input['cv_file_name']);
                         }
-                        
-                        
                         redirect('index.php/User_upload/upload_success');
                     }
                 }

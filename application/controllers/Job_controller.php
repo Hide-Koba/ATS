@@ -92,6 +92,9 @@ class Job_controller extends CI_Controller {
 			redirect("/Job_controller/admin_index");
 			exit();
 		}
+		$this->load->Model('Admin_model');
+		$candidate_list = $this->Admin_model->find_id_list_candidate($id);
+		$data['candidate_list'] = $candidate_list;
 
 		$this->template->load('template','Job_admin_detail',$data);
 		//$this->load->view('Job_detail',$data);
