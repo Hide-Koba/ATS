@@ -1,10 +1,43 @@
+<script src=""></script>
+<script>
+function sort(){
+  //alert('clicked');
+  let search_type = $('#sorting_type').val();
+  let keyword = $('#search_keyword').val();
+  let order = $('#search_order').val();
+
+  if (keyword===''){
+    alert('Please input keyword.');
+    return false;
+  }
+  let base_url = '<?=base_url()?>';
+  //http://localhost/ats/?type=specialization&key=php&order=asc
+  let query = '?type='+search_type+'&key='+keyword+'&order='+order;
+  console.log(query);
+
+  location.href=base_url+query;
+  
+}
+</script>
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h3 class="box-title text-red">Latest Jobs</h3>
+      <div>
+      <form>
+      Search type: <select name="sorting_type" id="sorting_type">
+        <option value="salary">salary</option>
+        <option value="location">location</option>
+        <option value="specialization">specialization</option></select>
+        keyword: <input type="text" name="keyword" id="search_keyword" />
+        Order: <select name="order" id="search_order"><option value="ASC">ASC</option><option value="DESC">DESC</option></select>
+        <input type="button" onclick="sort()" value="Search" />
+        </form>
+      </div>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        
       </ol>
     </section>
 
