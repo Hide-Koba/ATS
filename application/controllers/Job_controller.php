@@ -77,7 +77,7 @@ class Job_controller extends CI_Controller {
 	public function admin_index(){
 		$this->load->model('Job_model');
 
-		$data['list']=$this->Job_model->get_list();
+		$data['list']=$this->Job_model->get_list_admin();
 		//$this->load->view("candidate_view",$data);
 		$this->template->load("template","Job_admin_view",$data);
 	}

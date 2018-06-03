@@ -19,9 +19,17 @@ class Job_model extends CI_Model {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	public function get_list(){
+	public function get_list_admin(){
+		$data = $this->get_list(true);
+		return $data;
+	}
+
+	public function get_list($flag = false){
 		$this->db->select('*');
 		$this->db->from('Job_post');
+		if (!$flag){
+			$this->db->where('status',1);
+		}
 		$query=$this->db->get();
 		$data = array();
 		$tmp = array();
@@ -32,6 +40,7 @@ class Job_model extends CI_Model {
 			$tmp['Post_Description']=$each->Post_Description;
 			$tmp['place_of_work'] = $each->place_of_work;
 			$tmp['wage_per_month'] = $each->wage_per_month;
+			$tmp['dead_line'] = $each->dead_line;
 			array_push($data,$tmp);
 		}
 		

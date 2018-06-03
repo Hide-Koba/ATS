@@ -31,7 +31,7 @@
 			</div>
 			<!-- /.box-body -->
 			<div class="box-footer">
-			 <a href="<?= base_url()?>Job_controller/admin_edit/<?=$job_detail['id']?>"> <button type="button" class="btn btn-block btn-info" style="width:60px;">Update</button></a>
+			 <a href="<?= base_url()?>Job_controller/admin_edit/<?=$job_detail['id']?>"><button type="button" class="btn btn-block btn-info" style="width:60px;">Update</button></a>
 			</div>
 			<!-- /.box-footer-->
 		</div>
