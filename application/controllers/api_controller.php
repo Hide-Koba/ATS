@@ -77,6 +77,7 @@ class Api_controller extends CI_Controller {
     }
 
     public function add_post(){
+        //print_r($_POST);
         $data=array('Post_Title'=>$_POST["post_title"],
                     'short_description'=>$_POST["short_description"],
                     'Post_Description'=>$_POST["long_description"],
@@ -88,6 +89,7 @@ class Api_controller extends CI_Controller {
                     'Job_Pos'=>$_POST['position'],
                     'email'=>$_POST['email'],
                     'phone'=>$_POST['phone_number']);
+        // print_r($data);
 
         // $data=array('Post_Title'=>"test1",
         //             'short_description'=>"test short description",
