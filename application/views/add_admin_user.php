@@ -1,3 +1,12 @@
+<?php
+	if ($message!==""){
+		?>
+		<script>
+			alert('<?=$message?>');
+		</script>
+		<?php
+	}
+?>
 <section class="content">
 	<div class="box box-danger" style="width:500px; margin:0 auto;">
 			<div class="box-header with-border">
@@ -14,6 +23,10 @@
 	                <div class="form-group">
 	                  <label for="exampleInputText" required>Last Name</label>
 	                  <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+	                </div>
+									<div class="form-group">
+	                  <label for="exampleInputText" required>User name</label>
+	                  <input type="text" class="form-control" id="User_name" name="username" placeholder="Enter user name">
 	                </div>
 	                <div class="form-group">
 	                  <label for="exampleInputEmail1" required>Email address</label>

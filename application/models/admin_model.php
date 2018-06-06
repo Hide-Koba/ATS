@@ -40,6 +40,29 @@ class Admin_model extends CI_Model {
 		return false;
 	}
 
+	public function find_id_list_candidate($id){
+		$this->db->select('*');
+		$this->db->from("Resume_Candidate");
+		$this->db->where("applied_job_id",(int)$id);
+		$query=$this->db->get();
+		$tmp = array();
+		$data = array();
+		foreach ($query->result() as $each){
+			$tmp['id'] = $each->id;
+			$tmp['first_name'] = $each->first_name;
+			$tmp['last_name'] = $each->last_name;
+			$tmp['Address'] = $each->Address;
+			$tmp['Email'] = $each->Email;
+			$tmp['Phone_Number'] = $each->Phone_Number;
+			$tmp['Status'] = $each->Status;
+			$tmp['Job_Pos'] = $each->Job_Pos;
+			$tmp['cv_file_name'] = $each->cv_file_name;
+			$tmp['applied_job_id'] = $each->applied_job_id;
+			array_push($data,$tmp);
+		}
+		return $data;
+	}
+
 	public function list_candidate()
         {
                 $this->db->select('id,first_name,last_name,Status');
@@ -66,15 +89,47 @@ class Admin_model extends CI_Model {
 
         public function add_post($data){
         	if($this->db->insert('Job_post',$data))
-        		return "true";
-        	return "false";
-
+        		return true;
+        	return false;
         }
 
         public function add_user($data){
         	if($this->db->insert('mac_users',$data))
-        		return "true";
-        	return "false";
-        }
+        		return true;
+        	return false;
+		}
+		
+		public function add_admin_user($data){
+			return $this->add_user($data);
+		}
+
+		public function get_user_id_by_name($username=null){
+			if ($username===null){
+				return false;
+			}
+			$this->db->select('id');
+            $this->db->from('mac_users');
+            $this->db->where('username',$username);
+            $query=$this->db->get();
+            return $query->row();
+		}
+
+		public function update_password($id,$pw){
+			var_dump($id);
+			$this->db->where('id',$id);
+			return $this->db->update('mac_users',array('password'=>$pw));
+			
+		}
+
+		public function is_user_exists($username){
+			$this->db->where('username',$username);
+			$this->db->from('mac_users');
+			$count = $this->db->count_all_results();
+			if ($count===0){
+				return false;
+			}else{
+				return true;
+			}
+		}
 
 }

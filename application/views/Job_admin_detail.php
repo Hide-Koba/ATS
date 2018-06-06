@@ -2,7 +2,7 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h3 class="box-title text-blue">Edit job detail</h3>
+      <h3 class="box-title text-blue">Job detail</h3>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       </ol>
@@ -31,7 +31,38 @@
 			</div>
 			<!-- /.box-body -->
 			<div class="box-footer">
-			 <a href="<?= base_url()?>Job_controller/admin_edit/<?=$job_detail['id']?>"> <button type="button" class="btn btn-block btn-info" style="width:60px;">Update</button></a>
+			 <a href="<?= base_url()?>Job_controller/admin_edit/<?=$job_detail['id']?>"><button type="button" class="btn btn-block btn-info" style="">Update details</button></a>
+			 <br />
+			 <?php
+			 	if ($job_detail['status']==="0"){
+					 ?>
+					 <a href="<?= base_url()?>Job_controller/flip_status/<?=$job_detail['id']?>"><button type="button" class="btn btn-block btn-info" style="">Open this job</button></a>
+					 <?php
+				 }else{
+					 ?>
+					 <a href="<?= base_url()?>Job_controller/flip_status/<?=$job_detail['id']?>"><button type="button" class="btn btn-block btn-info" style="">Close this job</button></a>
+					 <?php
+				 }
+			 ?>
+				<div class="box-body">
+				<h3>Applied Candidates</h3>
+				<table border="1">
+				<tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Resume</th></tr>
+			 <?php
+			 //var_dump($candidate_list);
+			 foreach ($candidate_list as $each){
+				?><tr>
+					<td><a href="<?=base_url()?>Candidate_controller/single_user_detail/<?=$each['id']?>">SEE Detail</a></td>
+					<td><?=$each['first_name']?> <?=$each['last_name']?></td>
+					<td><?=$each['Email']?></td>
+					<td><?=$each['Phone_Number']?></td>
+					<td><a href="<?=base_url()?>uploads/<?=$each['cv_file_name']?>">Download Resume</a></td>
+					</tr>
+				<?php
+			 }
+			 ?>
+			 </table>
+			 </div>
 			</div>
 			<!-- /.box-footer-->
 		</div>

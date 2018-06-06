@@ -16,15 +16,26 @@
                   <th>Wage</th>
                   <th>Location</th>
                   <th>Deadline</th>
+                  <th>Status</th>
                 </tr>
                 <?php foreach ($list as $item):?>
                   <tr>
                     <td><?php echo $item['id'];?></td>
                     <td><?php echo $item['Post_Title'];?></td>
                     <td><?php echo $item['short_description'];?></td>
-                    <td><?php echo $item['wage_per_month'];?></td>
+                    <td>$<?php echo $item['wage_per_month'];?></td>
                     <td><?php echo $item['place_of_work'];?></td>
                     <td><?php echo $item['dead_line'];?></td>
+                    <td>
+                      <?php
+                      if ($item['status']==='0'){
+                        $st = 'Close';
+                      }else{
+                        $st = 'Open';
+                      }
+                      echo $st;
+                      ?>
+                    </td>
                     <td><a href="<?php echo base_url('Job_controller/admin_detail/').$item['id'] ?>"><button type="submit" class="btn btn-block btn-info btn-sm" name="view">view</button></a>
                   </tr>
                   <?php endforeach;?>

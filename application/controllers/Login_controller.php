@@ -22,7 +22,7 @@ class Login_controller extends CI_Controller {
 	function __construct()
     {
         parent::__construct();
-        $this->load->model('Admin_model');
+        $this->load->model('admin_model','Admin_model');
     } 
     
 	public function index()
@@ -46,45 +46,56 @@ class Login_controller extends CI_Controller {
 		else
 		{
 			$this->load->view('login_view');
-
 		}
 		
 	}
 
 	public function add_admin_user(){
+		$msg['message']= "";
 		if($this->input->post()){
-			$data=array(
-				'first_name'=>$this->input->post('first_name'),
-				'last_name'=>$this->input->post('last_name'),
-				'username'=>$this->input->post('username'),
-				'password'=>$this->input->post('password'),
-				'Address'=>$this->input->post('address'),
-				'Email'=>$this->input->post('email'),
-				'phone_number'=>$this->input->post('phone_number')
-			);
-
-			$msg=$this->Admin_model->add_admin_user($data);
-
-			echo $msg;
-
-		}else{
-			$this->template->load("template","add_admin_user");
-			// $this->load->view("add_admin_user");
+			$exist = $this->Admin_model->is_user_exists($this->input->post('username'));
+			if ($exist){
+				$msg['message'] = 'User exist. Please use other username';
+			}else{
+				$data=array(
+					'first_name'=>$this->input->post('first_name'),
+					'last_name'=>$this->input->post('last_name'),
+					'username'=>$this->input->post('username'),
+					'password'=>$this->input->post('password'),
+					'Address'=>$this->input->post('address'),
+					'Email'=>$this->input->post('email'),
+					'phone_number'=>$this->input->post('phone_number')
+				);
+	
+				//$msg['message']=$this->Admin_model->add_admin_user($data);
+				$this->Admin_model->add_admin_user($data);
+				$msg['message'] = 'User created. Username: '.$data['username'];
+			}
+			
 		}
-
+		$this->template->load("template","add_admin_user",$msg);
 	}
 
-	// public function register()
-	// {
-	// 	if($this->input->post())
-	// 	{
-	// 		$data=$this->admin_model->register($this->input->post());
-	// 	}
-	// 	else
-	// 	{
-	// 		$this->load->view('register');
-	// 	}
-	// }
+	public function update_password(){
+		$msg['message'] = "";
+		if ($this->input->post()){
+			$data =$this->input->post();
+			if ($data['password']===$data['confirm_password']){
+				$username = $_SESSION['username'];
+				$id = $this->Admin_model->get_user_id_by_name($username);
+				$msg['message'] = $this->Admin_model->update_password($id->id,md5($data['password']));
+				if ($msg['message']===true){
+					$msg['message'] = '';
+				}
+			}else{
+				$msg['message']="Password does not match";
+			}
+		}else{
+			//$msg['message'] = "No request";
+		}
+		$this->template->load("template","update_password",$msg);
+	}
+
 	 public function logout(){
 	 	$this->session->sess_destroy();
 	 	redirect("Login_controller",'refresh');

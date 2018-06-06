@@ -2,7 +2,7 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h3 class="box-title text-red" style="width:500px; margin:0 auto;">Apply for Job</h3>
+      <h3 class="box-title text-red" style="width:500px; margin:0 auto;">Edit Job Detail</h3>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       </ol>
@@ -58,6 +58,7 @@
                 	<label>Applied Position</label>
 	                <select name="Job_Pos">
 								<?php
+                var_dump($job_pos);
 								foreach($job_pos as $each){
 								?>
 									<option value="<?=$each['id']?>"><?=$each['job_title']?></option>

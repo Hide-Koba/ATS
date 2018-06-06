@@ -38,7 +38,7 @@ class Job_controller extends CI_Controller {
 		$job_list = $this->Job_model->get_list_by_q($query);
 		$body["job_data"] = $job_list;
 		//$this->load->view('Job_listing',$body);
-		$this->template->load('front_template','job_listing',$body);
+		$this->template->load('front_template','Job_listing',$body);
 	}
 
 	public function detail($id=null){
@@ -77,7 +77,7 @@ class Job_controller extends CI_Controller {
 	public function admin_index(){
 		$this->load->model('Job_model');
 
-		$data['list']=$this->Job_model->get_list();
+		$data['list']=$this->Job_model->get_list_admin();
 		//$this->load->view("candidate_view",$data);
 		$this->template->load("template","Job_admin_view",$data);
 	}
@@ -92,6 +92,9 @@ class Job_controller extends CI_Controller {
 			redirect("/Job_controller/admin_index");
 			exit();
 		}
+		$this->load->Model('Admin_model');
+		$candidate_list = $this->Admin_model->find_id_list_candidate($id);
+		$data['candidate_list'] = $candidate_list;
 
 		$this->template->load('template','Job_admin_detail',$data);
 		//$this->load->view('Job_detail',$data);
@@ -101,16 +104,18 @@ class Job_controller extends CI_Controller {
 		if ($this->input->post()){
 			$data = $this->input->post();
 			unset($data['Update']);
+			//var_dump($data);
 			$result = $this->Job_model->edit($data);
+			//var_dump($result);
+			//exit();
 		}
 
 		
 		$data['job_detail'] = $this->Job_model->get_detail($id);	
 		
-		//$this->load->Model('User_uploads');
-		//$job_pos = $this->User_uploads->get_jobpositions();
-		$body = array();
-		//$body['job_pos'] = $job_pos;
+		$this->load->Model('User_uploads');
+		$job_pos = $this->User_uploads->get_jobpositions();
+		$data['job_pos'] = $job_pos;
 		$this->template->load('template','Job_editing',$data);
 	}
 
@@ -158,6 +163,24 @@ class Job_controller extends CI_Controller {
 		}
 
 		redirect("/Job_controller/admin_index");
+	}
+
+	public function flip_status($id=null){
+		$this->load->Model('Job_model');
+		if ($id===null){
+			redirect("/Job_controller/admin_index");
+		}
+
+		$status = $this->Job_model->get_status($id);
+		if ($status==='0'){
+			$updater = 1;
+		}else{
+			$updater = 0;
+		}
+		$status = $this->Job_model->update_status($id,$updater);
+
+		redirect("/Job_controller/admin_detail/".$id);
+
 	}
 
 	// public function register()

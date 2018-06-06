@@ -31,7 +31,7 @@
 			</div>
 			<!-- /.box-body -->
 			<div class="box-footer">
-			 <a href="<?= base_url()?>User_upload/"> <button type="button" class="btn btn-block btn-info" style="width:60px;">Apply</button></a>
+			 <a href="<?= base_url()?>User_upload?id=<?=$job_detail['id']?>"> <button type="button" class="btn btn-block btn-info" style="width:60px;">Apply</button></a>
 			</div>
 			<!-- /.box-footer-->
 		</div>
