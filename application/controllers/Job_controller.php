@@ -64,6 +64,10 @@ class Job_controller extends CI_Controller {
 			unset($data['submit']);
 			$this->load->Model('Job_model');
 			$result = $this->Job_model->add($data);
+			if ($result){
+				//admin_index
+				redirect("/Job_controller/admin_index");
+			}
 		}else{
 			
 		}
@@ -71,7 +75,7 @@ class Job_controller extends CI_Controller {
 		$job_pos = $this->User_uploads->get_jobpositions();
 		$body = array();
 		$body['job_pos'] = $job_pos;
-		$this->template->load('front_template','Job_Adding');
+		$this->template->load('front_template','Job_Adding',$body);
 	}
 
 	public function admin_index(){
@@ -108,6 +112,10 @@ class Job_controller extends CI_Controller {
 			$result = $this->Job_model->edit($data);
 			//var_dump($result);
 			//exit();
+			if ($result){
+				redirect("/Job_controller/admin_index");
+			}
+
 		}
 
 		

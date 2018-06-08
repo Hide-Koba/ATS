@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1" required>Wage per month</label>
-                  <input type="email" class="form-control" id="wage_per_month" name="wage_per_month" placeholder="Wage per month">
+                  <input type="text" class="form-control" id="wage_per_month" name="wage_per_month" placeholder="Wage per month">
                 </div>
                  <div class="form-group">
                   <label for="exampleInputText">Place of work</label>
@@ -46,7 +46,7 @@
                 </div>
 				<div class="form-group">
                   <label for="exampleInputText">email</label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="email">
+                  <input type="email" class="form-control" id="email" name="email" placeholder="email">
                 </div>
 				<div class="form-group">
                   <label for="exampleInputText">Phone</label>
