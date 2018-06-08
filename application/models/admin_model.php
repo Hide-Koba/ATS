@@ -132,4 +132,53 @@ class Admin_model extends CI_Model {
 			}
 		}
 
+		public function candidate_resume_pickup($id){
+			$edu = $this->candidate_education_history($id);
+			$emp = $this->candidate_employment_history($id);
+			$retvar = array(
+				'education'=>$edu,
+				'employment'=>$emp
+			);
+			return $retvar;
+		}
+
+		public function candidate_education_history($id){
+			$this->db->select('*');
+			$this->db->from('Edu_history');
+			$this->db->where('user_id',(int)$id);
+			$result = $this->db->get();
+			$data = array();
+			$tmp = array();
+			foreach ($result->result() as $each){
+				$tmp['school_type'] = $each->school_type;
+				$tmp['name'] = $each->name;
+				$tmp['country'] = $each->country;
+				$tmp['city'] = $each->city;
+				$tmp['degree'] = $each->degree;
+				$tmp['title'] = $each->title;
+				$tmp['DegreeDate'] = $each->DegreeDate;
+				array_push($data,$tmp);
+			}
+
+			return $data;
+		}
+
+		public function candidate_employment_history($id){
+			$this->db->select('*');
+			$this->db->where('user_id',(int)$id);
+			$this->db->from('Emp_history');
+			$result = $this->db->get();
+			$data = array();
+			$tmp = array();
+			foreach ($result->result() as $each){
+				$tmp['org_name'] = $each->org_name;
+				$tmp['start_date'] = $each->start_date;
+				$tmp['end_date'] = $each->end_date;
+				$tmp['title'] = $each->title;
+				array_push($data,$tmp);
+			}
+
+			return $data;
+		}
+
 }

@@ -45,6 +45,9 @@ class Candidate_Controller extends CI_Controller {
 			$job_data = $this->Job_model->get_detail((int)$data['list']->applied_job_id);
 		}
 		$data['job_data'] = $job_data;
+		$resumedata = $this->Admin_model->candidate_resume_pickup($id);
+		$data['employment_history'] = $resumedata['employment'];
+		$data['education_history'] = $resumedata['education'];
 		$this->template->load("template","single2",$data);
 	}
 

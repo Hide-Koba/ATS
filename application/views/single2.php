@@ -19,13 +19,65 @@
                 <li><a href="#">Address <span class="pull-right badge bg-blue"><?php echo $list->Address; ?></span></a></li>
                 <li><a href="#">Email <span class="pull-right badge bg-aqua"><?php echo $list->Email;?></span></a></li>
                 <li><a href="#">Phone <span class="pull-right badge bg-green"><?php echo $list->Phone_Number;?></span></a></li>
+                <li><a href="<?=base_url()?>uploads/<?=$list->cv_file_name?>"><span class="pull-right badge bg-green">Download Resume </span></a></li>
               </ul>
+            </div>
+            <div class="box-footer no-padding">
+            <h3>Employment History</h3>
+            <?php
+            if (count($employment_history)===0){
+              echo 'No employment History shown';
+            }else{
+              ?>
+              <table border="1">
+                <tr><th>Organization name</th><th>Title</th><th>Start Date</th><th>End Date</th></tr>
+                <?php
+                  foreach ($employment_history as $each){
+                    ?>
+                    <tr>
+                      <td><?=$each['org_name']?></td>
+                      <td><?=$each['title']?></td>
+                      <td><?=$each['start_date']?></td>
+                      <td><?=$each['end_date']?></td>
+                    </tr>
+                    <?php
+                  }
+                ?>
+              </table>
+              <?php
+            }?>
+            </div>
+            <div class="box-footer no-padding">
+            <h3>Education History</h3>
+            <?php
+            if (count($education_history)===0){
+              echo 'No Education History shown';
+            }else{
+              ?>
+              <table border="1">
+                <tr><th>School type</th><th>Institution Name</th><th>Degree</th><th>Title</th><th>Degree Date</th></tr>
+                <?php
+                  foreach ($education_history as $each){
+                    ?>
+                    <tr>
+                      <td><?=$each['school_type']?></td>
+                      <td><?=$each['name']?></td>
+                      <td><?=$each['degree']?></td>
+                      <td><?=$each['title']?></td>
+                      <td><?=$each['DegreeDate']?></td>
+                    </tr>
+                    <?php
+                  }
+                ?>
+              </table>
+              <?php
+            }?>
             </div>
             <?php
             if (isset($job_data['id'])){  
 			      ?>
             <div class="box-footer no-padding">
-              <h4>This person applys through below job posting.</h4>
+              <h4>This person applys with job posting.</h4>
               <ul class="nav nav-stacked">
                 <li><a href="#">Job ID <span class="pull-right badge bg-blue"><?=$job_data['id']?></span></a></li>
                 <li><a href="#">Title <span class="pull-right badge bg-aqua"><?=$job_data['Post_Title']?></span></a></li>

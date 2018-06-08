@@ -5,6 +5,7 @@
       <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Job List</h3>
+              <a href="<?php echo base_url('Job_controller/add/')?>"><button type="submit" class="btn btn-block btn-info btn-sm" style="width:60px;" name="view">Add Job</button></a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
