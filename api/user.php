@@ -1,8 +1,8 @@
 <?php
-$dbhost = 'localhost';
-$dbuser = 'cybersyd_ats';
-$dbpass = '@gm3BX9wbuay';
-$dbname = 'cybersyd_ats';
+$dbhost = '192.168.1.3';
+$dbuser = 'root';
+$dbpass = ' ';
+$dbname = 'ATS';
 $con = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);
     
     $username = $_POST['username'];
